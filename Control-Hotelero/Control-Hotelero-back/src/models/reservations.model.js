@@ -8,9 +8,13 @@ const reservationsSchema = mongoose.Schema({
     fechaFinal: Date,
     hotel:{type: mongoose.Schema.ObjectId, ref:'Hotel'},
     rooms: [
-        {type: mongoose.Schema.ObjectId, ref: 'Rooms'}
+        { reservationss: {idRoom: {type: mongoose.Schema.ObjectId, ref: 'Rooms'},
+                        services: [ {type: mongoose.Schema.ObjectId, ref: 'ServiceHotel'}],
+                        subTotal: Number  
+            }
+        }
     ],
-    price: Number
+    Total: Number
 });
 
 module.exports = mongoose.model('Reservations', reservationsSchema);
