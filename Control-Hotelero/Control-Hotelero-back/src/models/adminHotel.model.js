@@ -7,6 +7,7 @@ const adminHotelSchema = mongoose.Schema({
     username: String,
     password: String,
     role: String
+    
 });
 
 module.exports = mongoose.model('AdminHotel', adminHotelSchema);

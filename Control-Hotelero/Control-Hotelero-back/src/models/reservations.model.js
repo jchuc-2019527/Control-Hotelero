@@ -8,11 +8,13 @@ const reservationsSchema = mongoose.Schema({
     fechaFinal: Date,
     hotel:{type: mongoose.Schema.ObjectId, ref:'Hotel'},
     rooms: [
-        { reservationss: {idRoom: {type: mongoose.Schema.ObjectId, ref: 'Rooms'},
-                        services: [ {type: mongoose.Schema.ObjectId, ref: 'ServiceHotel'}],
-                        subTotal: Number  
+         {room: {
+                idRoom: {type: mongoose.Schema.ObjectId, ref: 'Rooms'},
+                services: [ {type: mongoose.Schema.ObjectId, ref: 'ServiceHotel'}],
+                subTotal: Number
             }
         }
+
     ],
     Total: Number
 });
