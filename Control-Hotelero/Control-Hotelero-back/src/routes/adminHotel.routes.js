@@ -8,7 +8,5 @@ const mdAuth = require('../services/authenticated');
 const api = express.Router();
 
 
-api.post('/createAdminHotel', [mdAuth.ensureAuth, mdAuth.isAdmin], adminHotelController.createAdminHotel);
-
 
 module.exports = api;
