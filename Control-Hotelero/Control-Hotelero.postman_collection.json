@@ -1,0 +1,355 @@
+{
+	"info": {
+		"_postman_id": "5440b590-5ec3-41e4-8ff0-79cbc954e796",
+		"name": "Control-Hotelero",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AdminApp",
+			"item": [
+				{
+					"name": "Register Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "user1",
+									"type": "default"
+								},
+								{
+									"key": "username",
+									"value": "us1",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3200/adminApp/registerAdminApp",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"adminApp",
+								"registerAdminApp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmE5MjljZGZmMmI1NDRmZjAxZGRlY2EiLCJuYW1lIjoiQ2FybG9zIiwidXNlcm5hbWUiOiJjaHVjIiwicm9sZSI6IkFETUlOLUFQUCIsImlhdCI6MTY1NTMzODkwNSwiZXhwIjoxNjU1MzU2OTA1fQ.XoXMQ9-2avfOJQnyoyeZK_vTF8cslI2tUKKyGGUcZjk\"",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:3200/adminApp/getUsers",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"adminApp",
+								"getUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get AdminHotel",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmE5MjljZGZmMmI1NDRmZjAxZGRlY2EiLCJuYW1lIjoiQ2FybG9zIiwidXNlcm5hbWUiOiJjaHVjIiwicm9sZSI6IkFETUlOLUFQUCIsImlhdCI6MTY1NTMzODkwNSwiZXhwIjoxNjU1MzU2OTA1fQ.XoXMQ9-2avfOJQnyoyeZK_vTF8cslI2tUKKyGGUcZjk\"",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:3200/adminApp/getAdminHotel",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"adminApp",
+								"getAdminHotel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "cliente",
+									"type": "default"
+								},
+								{
+									"key": "username",
+									"value": "cliente",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3200/user/registerUser",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"user",
+								"registerUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "chuc",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3200/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update my User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmE5MjlkMWZmMmI1NDRmZjAxZGRlY2QiLCJuYW1lIjoiQ2FybG9zIiwidXNlcm5hbWUiOiJDRSIsInJvbGUiOiJDTElFTlQiLCJpYXQiOjE2NTUzMjU5MjAsImV4cCI6MTY1NTM0MzkyMH0.p0ujKTQHoPnmP_yTVgrEt3IYVJ2hcgP4eCxAZydfteI\"",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Carlos",
+									"type": "default"
+								},
+								{
+									"key": "username",
+									"value": "CE",
+									"type": "default"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3200/user/updateUser/62a929d1ff2b544ff01ddecd",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"user",
+								"updateUser",
+								"62a929d1ff2b544ff01ddecd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmE5M2FjMzAxYzlkODM3MGNmMTA2ZmMiLCJuYW1lIjoiQ2FybG9zMTMiLCJ1c2VybmFtZSI6IkNFRUVFIiwicm9sZSI6IkNMSUVOVCIsImlhdCI6MTY1NTI1NzgyOCwiZXhwIjoxNjU1Mjc1ODI4fQ.RnK_Jnw2gKNMWapB4bvNOiHnzHTlh_7-2_Y1OZlsc1U\"",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:3200/user/deleteUser/62a93ac301c9d8370cf106fc",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"user",
+								"deleteUser",
+								"62a93ac301c9d8370cf106fc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AdminHotel",
+			"item": [
+				{
+					"name": "CreateAdminHotel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmE5MjljZGZmMmI1NDRmZjAxZGRlY2EiLCJuYW1lIjoiQ2FybG9zIiwidXNlcm5hbWUiOiJjaHVjIiwicm9sZSI6IkFETUlOLUFQUCIsImlhdCI6MTY1NTM0MTIxMSwiZXhwIjoxNjU1MzU5MjExfQ.wWbKwKyp9s-1CtaBCrpkduGaWmDh3YUWtlHH_O1Oy0U\"",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "adminHotel xD",
+									"type": "default"
+								},
+								{
+									"key": "username",
+									"value": "manager3",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3200/adminHotel/createAdminHotel",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"adminHotel",
+								"createAdminHotel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hotel",
+			"item": [
+				{
+					"name": "Add Hotel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmE5MjljZGZmMmI1NDRmZjAxZGRlY2EiLCJuYW1lIjoiQ2FybG9zIiwidXNlcm5hbWUiOiJjaHVjIiwicm9sZSI6IkFETUlOLUFQUCIsImlhdCI6MTY1NTM0MDczOCwiZXhwIjoxNjU1MzU4NzM4fQ.uASIetqcLac9GCMm-rZQ_ly2A-Qwh7nchFbjNqxqXvk\"",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Hotel zona 5",
+									"type": "default"
+								},
+								{
+									"key": "direction",
+									"value": "zona5 de mixco",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "33123312",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3200/hotel/addHotel/62a92a25ff2b544ff01dded2",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"hotel",
+								"addHotel",
+								"62a92a25ff2b544ff01dded2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
