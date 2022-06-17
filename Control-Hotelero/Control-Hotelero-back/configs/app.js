@@ -10,6 +10,8 @@ const adminAppRoutes = require('../src/routes/adminApp.routes');
 const adminHotelRoutes = require('../src/routes/adminHotel.routes');
 const hotelRoutes = require('../src/routes/hotel.routes');
 const eventRoutes = require('../src/routes/events.routes');
+const roomRoutes = require('../src/routes/rooms.routes');
+const serviceRoutes = require('../src/routes/serviceHotel.routes');
 
 
 const app = express();
@@ -24,6 +26,8 @@ app.use('/adminApp', adminAppRoutes);
 app.use('/adminHotel', adminHotelRoutes);
 app.use('/hotel', hotelRoutes);
 app.use('/event', eventRoutes);
+app.use('/room', roomRoutes);
+app.use('/service', serviceRoutes);
 
 exports.initServer = ()=> app.listen(port, ()=>{
     console.log(`Listening on port ${port}`)

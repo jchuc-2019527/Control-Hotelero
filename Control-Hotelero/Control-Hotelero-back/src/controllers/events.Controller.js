@@ -45,8 +45,8 @@ exports.updateEvent = async (req,res)=>{
 
         const eventExist = await Events.findOne({_id: eventId});
         if(eventExist){
-            const permission = await checkPermission1(adminHotelId, eventExist.adminHotel);
-            if(permission === false){
+            const permission = await checkPermission1(adminHotelId, eventExist.adminHotel); ///
+            if(permission === true){
                 const checkData = await checkDataUpdate1(params);
                 if(checkData === false){
                     return res.status(400).send({message:'Unable to update this data'});

@@ -44,10 +44,10 @@ exports.checkPermission = async (userId, sub)=>{
 }
 exports.checkPermission1 = async(adminHotelId, sub)=>{
     try {
-        if(adminHotelId == sub){
-            return true;
+        if(adminHotelId != sub){
+            return false; ///
         }else{
-            return false;
+            return true;
         }
 
     } catch (error) {
