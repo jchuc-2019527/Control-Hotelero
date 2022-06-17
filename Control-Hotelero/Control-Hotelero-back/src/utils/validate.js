@@ -42,6 +42,19 @@ exports.checkPermission = async (userId, sub)=>{
         return err;
     }
 }
+exports.checkPermission1 = async(adminHotelId, sub)=>{
+    try {
+        if(adminHotelId == sub){
+            return true;
+        }else{
+            return false;
+        }
+
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
 
 exports.checkUpdate = async (user)=>{
     if(user.password || 
@@ -52,6 +65,21 @@ exports.checkUpdate = async (user)=>{
         return true;
     }
 }
+
+exports.checkDataUpdate1 = async(adminHotel)=>{
+    try {
+        if(adminHotel.password ||  Object.entries(adminHotel).length===0 || adminHotel.role){
+            return false;
+        }else{
+            return true;
+        }
+
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
+
 exports.alreadyUser = async (username)=>{
     try{
      let exist = User.findOne({username:username}).lean()
@@ -61,6 +89,7 @@ exports.alreadyUser = async (username)=>{
     }
  }
 
+ 
 
 //  Client
 

@@ -1,7 +1,7 @@
 'use strict'
 const User = require('../models/user.model');
 const {validateData, encrypt, searchUser, checkPassword, searchAdminApp, searchAdminHotel, checkPermission,checkUpdate, alreadyUser} = require('../utils/validate');
-const {createToken} = require('../services/jwt');
+const {createToken, createToken1} = require('../services/jwt');
 
 // Register Client
 exports.registerUser = async(req, res)=>{
@@ -63,7 +63,7 @@ exports.login = async (req, res) => {
             }else {
                 let search = await searchAdminHotel(params.username);
             if (search && await checkPassword(params.password, search.password)) {
-                const token = await createToken(search);
+                const token = await createToken1(search);
                 return res.status(200).send({token, message: 'Login successfully', search});
             }
         }
