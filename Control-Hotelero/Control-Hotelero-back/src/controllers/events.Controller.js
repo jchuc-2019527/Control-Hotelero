@@ -1,6 +1,6 @@
 'use strict'
 
-const {validateData,checkDataUpdate1,checkPermission1 } = require('../utils/validate');
+const {validateData, checkDataUpdate1} = require('../utils/validate');
 const Events = require('../models/events.model');
 
 
@@ -37,36 +37,30 @@ exports.addEvent = async(req, res)=>{
 
 
 //Update event
-exports.updateEvent = async (req,res)=>{
+exports.updateEvent = async(req, res)=>{
     try {
         const params = req.body;
-        const adminHotelId = req.adminHotel.sub;
         const eventId = req.params.id;
 
-        const eventExist = await Events.findOne({_id: eventId});
+        const eventExist = await Events.findOne({_id: eventId})
+        
         if(eventExist){
-            const permission = await checkPermission1(adminHotelId, eventExist.adminHotel); ///
-            if(permission === true){
-                const checkData = await checkDataUpdate1(params);
-                if(checkData === false){
-                    return res.status(400).send({message:'Unable to update this data'});
-                }else{
-                    const eventExist = await Events.findOne({name:params.name.toUpperCase(), adminHotel: adminHotelId});
-                    if(!eventExist){
-                        const eventUpdate = await Events.findOneAndUpdate({_id: eventId}, {name: params.name.toUpperCase(), type: params.type}, {new:true});
-                        return res.status(200).send({message: 'Event Updated', eventUpdate})
-                    }else{
-                        return res.status(400).send({message:'Event already exist'})
-                    }
-                }
+            const checkData = await checkDataUpdate1(params);
+            if(checkData === false){
+                return res.status(400).send({message:'Unable to update this data'});
             }else{
-                return res.status(400).send({message:'Accion unauthorized'});
+                 const existEvent = await Events.findOne({name:params.name.toUpperCase()})
+                //Verificar
+                if(existEvent && eventExist.name != params.name){ 
+                    return res.status(400).send({message:'Name already in use'});
+                }else{
+                    const eventUpdate = await Events.findOneAndUpdate({_id: eventId}, params, {new:true});
+                    return res.status(200).send({message:'Event updated succesfuly', eventUpdate});
+                }
             }
-
         }else{
             return res.status(400).send({message:'Event not found'})
         }
-
     } catch (error) {
         console.log(error);
         return error;
@@ -130,25 +124,19 @@ exports.getEventadminHotel = async (req, res)=>{
 //Eliminar un evento
 exports.deleteEvent = async(req, res)=>{
     try {
-        const adminHotelId = req.adminHotel.sub;
         const eventId = req.params.id;
 
         const eventExist = await Events.findOne({_id: eventId});
         if(eventExist){
-            const permission = await checkPermission1(adminHotelId, eventExist.adminHotel);
-            if(permission === false){
-                const deleteEvent = await Events.findOneAndDelete({_id: eventId});
-                return res.status(200).send({message:'Event Deleted', deleteEvent});
-            }else{
-                return res.status(400).send({message:'Accion unauthorized'})
-            }
-
+            const eventDelete = await Events.findOneAndDelete({_id: eventId});
+            return res.status(200).send({message:'Event deleted successfuly', eventDelete});
         }else{
-            return res.status(404).send({message:'Event not found'}) 
+            return res.status(400).send({message:'Event not found'})
         }
     } catch (error) {
         console.log(error);
         return error;
     }
 };
+
 

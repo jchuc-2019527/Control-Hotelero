@@ -81,5 +81,53 @@ exports.deleteService = async(req,res)=>{
     }
 };
 
+//Get services, user
+exports.getServices = async (req, res)=>{
+    try {
+        const userId = req.user.sub
+        const services = await Service.find({user: userId});
+        return res.status(200).send({services});
 
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
+//Get service, user
+exports.getService = async (req, res)=>{
+    try {
+        const serviceId = req.params.id;
+        const service = await Service.findOne({_id: serviceId})
+        return res.status(200).send({service});
 
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
+
+//Get services, adminHotel
+exports.getServicesAdminHotel = async (req, res)=>{
+    try {
+        const adminHotelId = req.adminHotel.sub
+        const services = await Service.find({adminHotel: adminHotelId});
+        return res.status(200).send({services});
+
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
+
+//Get service, adminHotel
+exports.getServiceAdminHotel = async (req, res)=>{
+    try {
+        const serviceId = req.params.id;
+        const service = await Service.findOne({_id: serviceId})
+        return res.status(200).send({service});
+
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};

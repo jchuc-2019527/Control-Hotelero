@@ -35,7 +35,7 @@ exports.addRoom = async(req, res)=>{
         return error;
     }
 }
-
+//update room
 exports.updateRoom = async(req, res)=>{
     try {
         const params = req.body;
@@ -82,6 +82,58 @@ exports.deleteRoom = async(req, res)=>{
         }else{
             return res.status(400).send({message:'Room not found'})
         }
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
+
+//Get rooms, user
+exports.getRooms = async (req, res)=>{
+    try {
+        const userId = req.user.sub
+        const rooms = await Room.find({user: userId});
+        return res.status(200).send({rooms});
+
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
+
+//Get room, user
+exports.getRoom = async (req, res)=>{
+    try {
+        const roomId = req.params.id;
+        const room = await Room.findOne({_id: roomId})
+        return res.status(200).send({room});
+
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
+//Get rooms, adminHotel
+
+exports.getRoomsAdminHotel = async (req, res)=>{
+    try {
+        const adminHotelId = req.adminHotel.sub
+        const rooms = await Room.find({adminHotel: adminHotelId});
+        return res.status(200).send({rooms});
+
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
+
+//Get room, adminHotel
+exports.getRoomAdminHotel = async (req, res)=>{
+    try {
+        const roomId = req.params.id;
+        const room = await Room.findOne({_id: roomId})
+        return res.status(200).send({room});
+
     } catch (error) {
         console.log(error);
         return error;
