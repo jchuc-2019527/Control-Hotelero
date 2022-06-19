@@ -1,6 +1,7 @@
 'use strict'
 const AdminHotel = require ('../models/adminHotel.model')
 const Hotel = require('../models/hotel.model');
+
 const {validateData, encrypt} = require('../utils/validate');
 
 
@@ -48,6 +49,44 @@ exports.addHotel = async(req, res)=>{
             }
         }
         
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
+
+//Get hotels, user
+exports.getHotels = async (req, res)=>{
+    try {
+        const userId = req.user.sub
+        const hotels = await Hotel.find({user: userId});
+        return res.status(200).send({hotels});
+
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
+//Get hotel, user
+exports.getHotel = async (req, res)=>{
+    try {
+        const hotelId = req.params.id;
+        const hotel = await Hotel.findOne({_id: hotelId})
+        return res.status(200).send({hotel});
+
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
+
+//Get hotet del admin-hotel
+exports.getHotelAdmin = async (req, res)=>{
+    try {
+        const adminHotel = req.adminHotel.sub;
+        const hotel = await Hotel.find({adminHotel: adminHotel});
+        return res.status(200).send({hotel});
+
     } catch (error) {
         console.log(error);
         return error;

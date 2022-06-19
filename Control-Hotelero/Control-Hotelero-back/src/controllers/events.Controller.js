@@ -139,4 +139,17 @@ exports.deleteEvent = async(req, res)=>{
     }
 };
 
+//Ver eventos de un hotel
+exports.getEventsHotel = async(req, res)=>{
+    try {
+        const hotelId = req.params.id;
+        const events = await Events.find({hotel: hotelId}).populate('hotel');
+
+        return res.status(200).send({events});
+        
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
 

@@ -1,6 +1,6 @@
 'use strict'
 const Room = require('../models/rooms.model');
-const {validateData, checkPermission1, checkDataUpdate1} = require ('../utils/validate')
+const {validateData, checkPermission1, checkDataUpdate1,} = require ('../utils/validate')
 
 
 //Agregar Una habitación
@@ -139,3 +139,28 @@ exports.getRoomAdminHotel = async (req, res)=>{
         return error;
     }
 };
+
+//Ver habitaciones por hotel
+exports.getRoomsUser = async(req, res)=>{
+    try {
+        const hotelId = req.params.id;
+        const rooms = await Room.find({hotel: hotelId}).populate('hotel');
+
+        return res.status(200).send({rooms});
+        
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
+//Buscar habitaciones que esten disponibles, adminHotel
+exports.getAviableRooms = async(req, res)=>{
+    try{
+        const aviableRooms = await Room.find({status: false})
+            .lean()
+        return res.send({rooms: aviableRooms});
+    }catch(err){
+        console.log(err);
+        return res.status(500).send({message: 'Error searching aviable rooms'});
+    }
+}

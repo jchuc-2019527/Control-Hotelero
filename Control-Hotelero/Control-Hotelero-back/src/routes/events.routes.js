@@ -17,7 +17,7 @@ api.get('/getEventadminHotel/:id', [mdAuth.ensureAuth1], eventController.getEven
 // users
 api.get('/getEvents', [mdAuth.ensureAuth], eventController.getEvents);
 api.get('/getEvent/:id', [mdAuth.ensureAuth], eventController.getEvent);
-
+api.get('/getEventsHotel/:id', [mdAuth.ensureAuth], eventController.getEventsHotel);
 
 
 module.exports = api;

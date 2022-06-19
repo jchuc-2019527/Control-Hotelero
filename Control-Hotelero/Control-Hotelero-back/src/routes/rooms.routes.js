@@ -10,10 +10,12 @@ api.put('/updateRoom/:id', [mdAuth.ensureAuth1, mdAuth.isAdminHotel], roomContro
 api.delete('/deleteRoom/:id', [mdAuth.ensureAuth1, mdAuth.isAdminHotel], roomController.deleteRoom);
 api.get('/getRoomsAdminHotel', [mdAuth.ensureAuth1], roomController.getRoomsAdminHotel);
 api.get('/getRoomAdminHotel/:id', [mdAuth.ensureAuth1], roomController.getRoomAdminHotel);
+api.get('/getAviableRooms', [mdAuth.ensureAuth1, mdAuth.isAdminHotel], roomController.getAviableRooms);
 
 // users
 api.get('/getRooms', [mdAuth.ensureAuth], roomController.getRooms);
 api.get('/getRoom/:id', [mdAuth.ensureAuth], roomController.getRoom);
+api.get('/getRoomsUser/:id', [mdAuth.ensureAuth], roomController.getRoomsUser);
 
 
 module.exports = api;
