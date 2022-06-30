@@ -156,9 +156,10 @@ exports.getRoomsUser = async(req, res)=>{
 //Buscar habitaciones que esten disponibles, adminHotel
 exports.getAviableRooms = async(req, res)=>{
     try{
-        const aviableRooms = await Room.find({status: false})
-            .lean()
-        return res.send({rooms: aviableRooms});
+        const hotelId = req.params.id;
+        const rooms = await Room.find({hotel: hotelId, status: false})
+        return res.send({rooms});
+
     }catch(err){
         console.log(err);
         return res.status(500).send({message: 'Error searching aviable rooms'});

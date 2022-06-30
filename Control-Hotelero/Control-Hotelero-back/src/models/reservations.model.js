@@ -1,21 +1,22 @@
+
 'use strict'
 
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const reservationsSchema = mongoose.Schema({
-    user:{type: mongoose.Schema.ObjectId, ref:'User'},
-    fechaInicio: Date,
-    fechaFinal: Date,
-    hotel:{type: mongoose.Schema.ObjectId, ref:'Hotel'},
-    rooms: [
-         {room: {
-                idRoom: {type: mongoose.Schema.ObjectId, ref: 'Rooms'},
-                subTotal: Number
-            }
+const reservationSchema = mongoose.Schema({
+    startDate: Date,
+    finishDate: Date,
+    user: {type: mongoose.Schema.ObjectId, ref:'User'},
+    hotel: {type: mongoose.Schema.ObjectId, ref:'Hotel'},
+    room: {type: mongoose.Schema.ObjectId, ref:'Rooms'},
+    services: [{
+        service: {
+            idService: {type: mongoose.Schema.ObjectId, ref: "ServiceHotel"},
+            name: String,
+            price: Number
         }
-    ],
-    services: [ {type: mongoose.Schema.ObjectId, ref: 'ServiceHotel'}],
-    Total: Number
+    }],
+    total: Number
 });
 
-module.exports = mongoose.model('Reservations', reservationsSchema);
+module.exports = mongoose.model('Reservation', reservationSchema);
