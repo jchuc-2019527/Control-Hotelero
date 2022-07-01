@@ -1,0 +1,110 @@
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <nav id="menu">
+    <ul>
+        <li><a data-bs-toggle="modal" data-bs-target="#exampleModalCenter1" style="text-decoration: none;">Crear cuenta</a></li>
+        <li><a data-bs-toggle="modal" data-bs-target="#exampleModalCenter" style="text-decoration: none;">Login</a></li>
+        <li><a style="text-decoration: none;">Hoteles</a></li>
+    </ul>
+  </nav>
+  <div class="carousel-inner" style="margin-top: -1.55vh">
+
+    <div class="carousel-item active" data-interval="50">
+      <img src="../../../assets/img/barcelo-hotel-group.jpg" class="d-block w-100" style="height: 94.2vh" alt="...">
+    </div>
+    <div class="carousel-item" data-interval="50">
+      <img src="../../../assets/img/home.jpg" class="d-block w-100" style="height: 94.2vh" alt="...">
+    </div>
+    <div class="carousel-item" data-interval="50">
+      <img src="../../../assets/img/hotel 4.jpg" class="d-block w-100" style="height: 94.2vh" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- Login -->
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content rounded -0">
+      <div class="modal-body py-0">
+        <button  style="float:right" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="d-flex main-content">
+          <div class="bg-image promo-img mr-3" style="background-image: url('../../../assets/img/login.jpg')">
+          </div>
+          <div class="content-text p-4" style="margin-left: 12%" >
+            <h3 style="text-align:center">Login</h3>
+            <br>
+            <form (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+              <div class="form-group">
+                <label for="name">Nombre de usuario</label>
+                <input [(ngModel)]="adminApp.username" name="name" type="text" class="form-control" id="name" placeholder="Nombre">
+              </div>
+              <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input [(ngModel)]="adminApp.password" name="password" type="password" class="form-control" id="password" placeholder="Contraseña">
+              </div>
+              <div class="form-group">
+                <div class="multi-buttonA" >
+                  <br>
+                  <input [disabled]="!loginForm.form.valid" type="submit" class="fadeIn fourth" value="Log In" data-bs-toggle="modal"
+                    data-bs-target="#exampleModalCenter" style="text-decoration: none;">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Crear cuenta-->
+<div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content rounded -0">
+      <div class="modal-body py-0">
+        <button  style="float:right" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="d-flex main-content">
+          <div class="bg-image promo-img mr-3" style="background-image: url('../../../assets/img/register.jpg')">
+          </div>
+          <div class="content-text p-4" style="margin-left: 12%" >
+            <h3 style="text-align:center">Crear Cuenta</h3>
+            <br>
+            <form (ngSubmit)="register(registerForm)" #registerForm="ngForm">
+              <div class="form-group">
+                <label for="name">Nombre</label>
+                <input [(ngModel)]="user.name" name="name" type="text" class="form-control" id="name" placeholder="Nombre">
+              </div>
+              <div class="form-group">
+                <label for="username">Nombre de usuario</label>
+                <input [(ngModel)]="user.username" name="username" type="text" class="form-control" id="username" placeholder="Nombre de usuario">
+              </div>
+              <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input [(ngModel)]="user.password" name="password" type="password" class="form-control" id="password" placeholder="Contraseña">
+              </div>
+              <div class="form-group">
+                <div class="multi-buttonA" >
+                  <br>
+                  <input [disabled]="!registerForm.form.valid" type="submit" class="fadeIn fourth" value="Registrar" data-bs-target="#exampleModalCenter" data-bs-toggle="modal">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
