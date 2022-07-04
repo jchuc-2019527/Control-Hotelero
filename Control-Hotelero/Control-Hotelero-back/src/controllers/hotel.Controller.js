@@ -58,7 +58,7 @@ exports.addHotel = async(req, res)=>{
 //Get hotels, user
 exports.getHotels = async (req, res)=>{
     try {
-        const userId = req.user.sub
+        const userId = req.user
         const hotels = await Hotel.find({user: userId});
         return res.status(200).send({hotels});
 

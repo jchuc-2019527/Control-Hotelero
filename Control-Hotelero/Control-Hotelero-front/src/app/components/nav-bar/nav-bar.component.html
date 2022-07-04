@@ -1,1 +1,72 @@
-<p>nav-bar works!</p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+  <a id="text" class="navbar-brand" routerLink="/home" >Hotels</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div  class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home" >
+          <i><img src="../../../assets/img/homeicon.png" alt="" width="30rem" height="30rem" style="margin-left: 5px"></i>
+          <br>
+         <h6>Home</h6>
+          <span class="sr-only">(current)</span>
+          </a>
+      </li>
+      <li *ngIf="role" class="nav-item active">
+        <a  routerLink="/hoteles" class="nav-link">
+          <i><img src="../../../assets/img/hotelIcone.png" alt="" width="35rem" height="30rem" style="margin-left: 8px"></i>
+          <br>
+          <h6>Hoteles</h6>
+          <span class="sr-only"></span>
+          </a>
+      </li>
+      <li *ngIf="role"  class="nav-item active">
+        <a class="nav-link">
+          <i><img src="../../../assets/img/grafica.png" alt="" width="35rem" height="30rem" style="margin-left: 8px"></i>
+          <br>
+          <h6>Grafica</h6>
+          <span class="sr-only"></span>
+          </a>
+      </li>
+      
+      <li *ngIf="role"  class="nav-item active">
+        <a class="nav-link" >
+          <i><img src="../../../assets/img/historial.png" alt="" width="35rem" height="30rem" style="margin-left: 15px"></i>
+          <br>
+          <h6>Historial</h6>
+          <span class="sr-only"></span>
+          </a>
+      </li>
+     
+    </ul>
+    <ul class="navbar-nav ">
+        <li *ngIf="role" class="nav-item active">
+            <a class="nav-link"  >
+              <i><img src="../../../assets/img/perfil.png" alt="" width="35rem" height="30rem"></i>
+              <br>
+              <h6>Perfil</h6>
+              <span class="sr-only"></span>
+              </a>
+          </li>
+
+          <li *ngIf="role" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Cerrar Sesión
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              
+              <li><hr class="dropdown-divider"></li>
+              <li><a (click)="logOut()" class="dropdown-item" routerLink="/home">Salir</a></li>
+            </ul>
+          </li>
+    </ul>
+ 
+  </div>
+</nav>

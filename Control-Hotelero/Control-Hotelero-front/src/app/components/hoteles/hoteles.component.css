@@ -1,0 +1,298 @@
+body{
+    margin: 0;
+    padding: 0px;
+    min-height: 180vh;
+    background: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    margin-left: 1%;
+    font-family: consolas;
+    justify-content: center;
+    margin-right: 2%;
+    
+}
+
+.container{
+  margin-top: 2%;
+    width: 400px;
+    position: relative;
+    display: flex;
+}
+
+
+.container .card{
+    position: relative;
+    cursor: pointer;
+    border-color: transparent;
+   
+}
+
+.container .card .face{
+    width: 350px;
+    height: 300px;
+    transition: 0.5s;
+}
+
+.container .card .face.face1{
+    position: relative;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transform: translateY(100px);
+}
+
+.container .card:hover .face.face1{
+    background: #07006b;
+    transform: translateY(0);
+}
+
+.container .card .face.face1 .content{
+    opacity: 0.2;
+    transition: 0.5s;
+}
+
+.container .card:hover .face.face1 .content{
+    opacity: 1;
+}
+
+.container .card .face.face1 .content img{
+    max-width: 330px;
+}
+
+.container .card .face.face1 .content h3{
+    margin: 10px 0 0;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.container .card .face.face2{
+    position: relative;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    transform: translateY(-200px);
+}
+
+.container .card:hover .face.face2{
+    transform: translateY(0);
+}
+
+.container .card .face.face2 .content p{
+    margin: 0;
+    padding: 0;
+}
+
+.container .card .face.face2 .content a{
+    margin: 100px 0 0;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 900;
+    color: #333;
+    padding: 12px;
+    border: 1px solid #333;
+}
+
+.container .card .face.face2 .content a:hover{
+    background: #333;
+    color: #fff;
+}
+
+/* bton */
+
+ /* BOTON A*/
+
+ .multi-buttonA button{
+    height: 39px;
+    width: 200px;
+    background: linear-gradient(to bottom, #ff6600, #f3a411);
+    font-weight: bold;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    margin: -5px;
+    padding: 0;
+    stroke: black;
+    outline: none;
+    margin-left: 21px;
+  }
+  .multi-buttonA :nth-child(1){
+    border-radius: 20px 20px 20px 20px;
+  }
+  .multi-buttonA :nth-child(3){
+    border-radius: 0 20px 20px 0;
+  }
+  button:hover{
+    cursor: pointer;
+    filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.45));
+  }
+  button:active{
+    filter: none;
+    transform: scale(.95);
+  }
+   /* BOTON B*/
+
+   .multi-buttonB button{
+    height: 39px;
+    width: 200px;
+    background: linear-gradient(to bottom, #0990ff, #1ccaff);
+    font-weight: bold;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    margin: -5px;
+    padding: 0;
+    stroke: black;
+    outline: none;
+    margin-left: 21px;
+  }
+  .multi-buttonB :nth-child(1){
+    border-radius: 20px 20px 20px 20px;
+  }
+  .multi-buttonB :nth-child(3){
+    border-radius: 0 20px 20px 0;
+  }
+  button:hover{
+    cursor: pointer;
+    filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.45));
+  }
+  button:active{
+    filter: none;
+    transform: scale(.95);
+  }
+
+  /* boton agregar */
+
+  span{
+    position: relative;
+    display: inline-flex;
+    width: 180px;
+    height: 55px;
+    margin: 0 15px;
+    perspective: 1000px;
+  }
+  span a{
+    font-size: 19px;
+    letter-spacing: 1px;
+    transform-style: preserve-3d;
+    transform: translateZ(-25px);
+    transition: transform .25s;
+    font-family: 'Montserrat', sans-serif;
+  
+  }
+  span a:before,
+  span a:after{
+    position: absolute;
+    content: "Agregar Hotel";
+    height: 55px;
+    width: 315px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid black;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  span a:before{
+    color: #fff;
+    background: #000;
+    transform: rotateY(0deg) translateZ(25px);
+  }
+  span a:after{
+    color: #000;
+    transform: rotateX(90deg) translateZ(25px);
+  }
+  span a:hover{
+    transform: translateZ(-25px) rotateX(-90deg);
+  }
+  /* Modal */
+
+  .modal {
+    border-radius: 7px;
+    overflow: hidden;
+    background-color: transparent; }
+    .modal .logo a img {
+      width: 30px; }
+    .modal .modal-content {
+      background-color: transparent;
+      border: none;
+      border-radius: 7px; }
+      .modal .modal-content .modal-body {
+        border-radius: 7px;
+        overflow: hidden;
+        background-color: #A9CCE3;
+        padding-left: 0px;
+        padding-right: 0px;
+        -webkit-box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.9);
+        box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.9); }
+        .modal .modal-content .modal-body h2 {
+          font-size: 18px; }
+        .modal .modal-content .modal-body p {
+          color: rgb(119, 119, 119);
+          font-size: 14px; }
+        .modal .modal-content .modal-body h3 {
+          color: #000;
+          font-size: 22px; }
+        .modal .modal-content .modal-body .close-btn {
+          color: #000; }
+        .modal .modal-content .modal-body .promo-img {
+          -webkit-box-flex: 0;
+          -ms-flex: 0 0 50%;
+          flex: 0 0 50%; }
+    .modal .cancel {
+      color: gray;
+      font-size: 14px; }
+    .modal .btn-primary {
+      padding-top: 10px;
+      padding-bottom: 10px; }
+  
+  .form-control {
+    border: transparent;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    border: none; }
+    .form-control:active, .form-control:focus, .form-control:hover {
+      -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2); }
+  
+  .btn {
+    border-radius: 4px;
+    border: none; }
+    .btn:active, .btn:focus {
+      outline: none;
+      -webkit-box-shadow: none !important;
+      box-shadow: none !important; }
+  
+  .custom-select {
+    border: none;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2); }
+    .custom-select:active, .custom-select:focus, .custom-select:hover {
+      -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2); }
+  
+  .bg-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; }
+  
+  .logo img {
+    width: 70px; }
+  
+  .custom-note {
+    color: #999; }
+    .custom-note a {
+      color: #555;
+      font-weight: 900 !important; }
+  
+  .btn-close{
+    margin-right: 10px;
+    margin-top: 10px;
+  }

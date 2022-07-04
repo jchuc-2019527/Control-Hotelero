@@ -8,7 +8,7 @@ const mdAuth = require('../services/authenticated');
 const api = express.Router();
 
 // users
-api.get('/getHotels', [mdAuth.ensureAuth], hotelController.getHotels);
+api.get('/getHotels',  hotelController.getHotels);
 api.get('/getHotel/:id', [mdAuth.ensureAuth], hotelController.getHotel);
 
 // adminHotel

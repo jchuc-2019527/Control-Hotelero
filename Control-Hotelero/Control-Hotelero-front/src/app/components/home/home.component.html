@@ -8,19 +8,19 @@
     <ul>
         <li><a data-bs-toggle="modal" data-bs-target="#exampleModalCenter1" style="text-decoration: none;">Crear cuenta</a></li>
         <li><a data-bs-toggle="modal" data-bs-target="#exampleModalCenter" style="text-decoration: none;">Login</a></li>
-        <li><a style="text-decoration: none;">Hoteles</a></li>
+        <li><a routerLink="/hoteles" style="text-decoration: none;">Hoteles</a></li>
     </ul>
   </nav>
   <div class="carousel-inner" style="margin-top: -1.55vh">
 
     <div class="carousel-item active" data-interval="50">
-      <img src="../../../assets/img/barcelo-hotel-group.jpg" class="d-block w-100" style="height: 94.2vh" alt="...">
+      <img src="../../../assets/img/barcelo-hotel-group.jpg" class="d-block w-100" style="height: 95vh" alt="...">
     </div>
     <div class="carousel-item" data-interval="50">
-      <img src="../../../assets/img/home.jpg" class="d-block w-100" style="height: 94.2vh" alt="...">
+      <img src="../../../assets/img/home.jpg" class="d-block w-100" style="height: 95vh" alt="...">
     </div>
     <div class="carousel-item" data-interval="50">
-      <img src="../../../assets/img/hotel 4.jpg" class="d-block w-100" style="height: 94.2vh" alt="...">
+      <img src="../../../assets/img/hotel 4.jpg" class="d-block w-100" style="height: 95vh" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -58,7 +58,7 @@
               <div class="form-group">
                 <div class="multi-buttonA" >
                   <br>
-                  <input [disabled]="!loginForm.form.valid" type="submit" class="fadeIn fourth" value="Log In" data-bs-toggle="modal"
+                  <input [disabled]="!loginForm.form.valid"  type="submit" class="fadeIn fourth" value="Log In" data-bs-toggle="modal"
                     data-bs-target="#exampleModalCenter" style="text-decoration: none;">
                 </div>
               </div>

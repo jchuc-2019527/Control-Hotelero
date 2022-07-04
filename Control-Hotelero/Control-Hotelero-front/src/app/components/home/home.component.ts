@@ -41,11 +41,11 @@ export class HomeComponent implements OnInit {
         })
         localStorage.setItem('token', res.token);
         localStorage.setItem('identity', JSON.stringify(res.search));
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/hoteles');
 
       },
       error:(err)=>Swal.fire({
-        title: err.error + '  ' + 'Error al loguearse' ,
+        title: err.error.message + '  ' + 'Error al loguearse' ,
         icon: 'error',
         timer: 4000,
         position:'center'
