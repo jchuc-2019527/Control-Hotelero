@@ -16,6 +16,8 @@ const reservationSchema = mongoose.Schema({
             price: Number
         }
     }],
+    days: Number,
+    status: Boolean,
     total: Number
 });
 

@@ -81,50 +81,26 @@ exports.deleteService = async(req,res)=>{
     }
 };
 
-//Get services, user
-exports.getServices = async (req, res)=>{
+//Mostrar todos los servicios de un Hotel
+exports.getServices = async(req, res)=>{
     try {
-        const userId = req.user.sub
-        const services = await Service.find({user: userId});
-        return res.status(200).send({services});
+        const idHotel = req.params.idHotel;
+        const events = await Service.find({hotel: idHotel});
 
+        return res.status(200).send({events});
+        
     } catch (error) {
         console.log(error);
         return error;
     }
 };
-//Get service, user
+
+//Mostar solo un servicio
 exports.getService = async (req, res)=>{
     try {
-        const serviceId = req.params.id;
-        const service = await Service.findOne({_id: serviceId})
-        return res.status(200).send({service});
-
-    } catch (error) {
-        console.log(error);
-        return error;
-    }
-};
-
-//Get services, adminHotel
-exports.getServicesAdminHotel = async (req, res)=>{
-    try {
-        const adminHotelId = req.adminHotel.sub
-        const services = await Service.find({adminHotel: adminHotelId});
-        return res.status(200).send({services});
-
-    } catch (error) {
-        console.log(error);
-        return error;
-    }
-};
-
-//Get service, adminHotel
-exports.getServiceAdminHotel = async (req, res)=>{
-    try {
-        const serviceId = req.params.id;
-        const service = await Service.findOne({_id: serviceId})
-        return res.status(200).send({service});
+        const idService = req.params.idService;
+        const event = await Service.findOne({_id: idService})
+        return res.status(200).send({event});
 
     } catch (error) {
         console.log(error);

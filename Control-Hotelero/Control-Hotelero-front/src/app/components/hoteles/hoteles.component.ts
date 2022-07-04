@@ -18,12 +18,14 @@ export class HotelesComponent implements OnInit {
   token:any;
   role:string = ''; 
 
+
   constructor(
     private hotelRest: HotelRestService,
     private adminAppRest: AdminAppRestService
   ) {
     this.hotel = new hotelModel('','',0,'','','','');
     this.adminHotel = new adminHotelModel('','','','','');
+    
    }
 
   ngOnInit(): void {
@@ -32,10 +34,11 @@ export class HotelesComponent implements OnInit {
     this.token = this.adminAppRest.getToken();
   }
 
+
   getHotels(){
     this.hotelRest.getHotels().subscribe({
       next:(res:any)=>{
-        this.hotels = res.hotels;
+        this.hotels = res.hoteles;
         console.log(this.hotels);
       },
       error: (err) => console.log(err.error.message || err.error)
@@ -43,7 +46,7 @@ export class HotelesComponent implements OnInit {
   };  
 
   addHotel(addHotelForm:any){
-    this.hotelRest.addHotel( this.hotel).subscribe({
+    this.hotelRest.addHotel(this.hotel).subscribe({
       next:(res:any)=>{
         Swal.fire({
           title: res.message + '  ' + res.hotel.nameHotel,

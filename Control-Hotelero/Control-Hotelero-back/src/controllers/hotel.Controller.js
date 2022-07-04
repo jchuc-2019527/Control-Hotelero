@@ -1,6 +1,9 @@
 'use strict'
 const AdminHotel = require ('../models/adminHotel.model')
 const Hotel = require('../models/hotel.model');
+const Service = require ('../models/serviceHotel.model');
+const Room = require ('../models/rooms.model');
+const Event = require ('../models/events.model')
 
 const {validateData, encrypt} = require('../utils/validate');
 
@@ -55,41 +58,87 @@ exports.addHotel = async(req, res)=>{
     }
 };
 
-//Get hotels, user
-exports.getHotels = async (req, res)=>{
+//Eliminar un Hotel
+exports.deleteHotel = async (req,res)=>{
     try {
-        const userId = req.user
-        const hotels = await Hotel.find({user: userId});
-        return res.status(200).send({hotels});
+        const idHotel = req.params.idHotel
+        const hotelExist = await Ho.findOne({_id: idHotel});
+        if(hotelExist){
+            const deleteHotel = await Hotel.findOneAndDelete({_id: idHotel});
+            const deleteRoom = await Room.deleteMany({hotel: idHotel});
+            const deleteService = await Service.deleteMany({hotel: idHotel});
+            const deleteEvent = await Event.deleteMany({hotel: idHotel});
+            return res.status(200).send({message:'Hotel Deleted', deleteHotel})
 
+        }else{
+            return res.status(400).send({message:'Hotel not found'})
+        }
+        
     } catch (error) {
         console.log(error);
         return error;
     }
 };
-//Get hotel, user
+
+ exports.updateHotel = async(req, res)=>{
+    try {
+        const idHotel = req.params.idHotel
+        const params = req.body;
+        const hotelExist = await Ho.findOne({_id: idHotel});
+        if(hotelExist){
+            const hotelName = await Hotel.findOne({name: params.nameHotel})
+            if(hotelName && hotelExist.nameHotel != params.nameHotel){
+                return res.status(400).send({message:'Name already in use'})
+            }else{
+                const updateHotel = await Hotel.findOneAndUpdate({_id: idHotel}, params, {new:true});
+                return res.status(200).send({message:'Hotel updated', updateHotel})
+            }
+        }else{
+            return res.status(400).send({message:'Hotel not found'})
+        }
+
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+ };
+
+
+//Mostrar todos los Hoteles
+exports.getHoteles = async(req, res)=>{
+    try {
+
+        const hoteles = await Hotel.find();
+        return res.status(200).send({hoteles});
+        
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
+
+//Mostrar solo un Hotel
 exports.getHotel = async (req, res)=>{
     try {
-        const hotelId = req.params.id;
-        const hotel = await Hotel.findOne({_id: hotelId})
+        const idHotel = req.params.idHotel;
+        const hotel = await Hotel.findOne({_id: idHotel})
         return res.status(200).send({hotel});
-
     } catch (error) {
         console.log(error);
         return error;
     }
 };
 
-//Get hotet del admin-hotel
-exports.getHotelAdmin = async (req, res)=>{
+//Mostrar el hotel del Admin-Hotel
+exports.getHotelByAdmin = async (req, res)=>{
     try {
-        const adminHotel = req.adminHotel.sub;
-        const hotel = await Hotel.find({adminHotel: adminHotel});
+        const idAdmin = req.adminHotel.sub
+        const hotel = await Hotel.findOne({adminHotel: idAdmin})
         return res.status(200).send({hotel});
-
     } catch (error) {
         console.log(error);
         return error;
     }
 };
+
 

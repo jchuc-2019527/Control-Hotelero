@@ -3,11 +3,21 @@
 const mongoose = require('mongoose')
 
 const invoiceSchema = mongoose.Schema({
-    user:{type: mongoose.Schema.ObjectId, ref:'User'},
-    fecha: Date,
-    hotel:{type: mongoose.Schema.ObjectId, ref:'Hotel'},
-    reservations:{type: mongoose.Schema.ObjectId, ref:'Reservations'},
-    Total: Number
+    dateInvoice: Date,
+    startDate: Date,
+    finishDate: Date,
+    user: String,
+    hotel: String,
+    room: String,
+    services: [{
+        service: {
+            idService: {type: mongoose.Schema.ObjectId, ref: "ServiceHotel"},
+            name: String,
+            price: Number
+        }
+    }],
+    days: Number,
+    total: Number
 });
 
 module.exports = mongoose.model('Invoice', invoiceSchema);

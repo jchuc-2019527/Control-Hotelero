@@ -5,6 +5,7 @@ const Events = require('../models/events.model');
 
 
 
+
 //Agregar una Evento
 exports.addEvent = async(req, res)=>{
     try {
@@ -67,59 +68,6 @@ exports.updateEvent = async(req, res)=>{
     }
 };
 
-//Get de los  eventos
-
-exports.getEvents = async (req, res)=>{
-    try {
-        const userId = req.user.sub
-        const events = await Events.find({user: userId});
-        return res.status(200).send({events});
-
-    } catch (error) {
-        console.log(error);
-        return error;
-    }
-};
-
-//Get de un solo evento
-exports.getEvent = async (req, res)=>{
-    try {
-        const eventId = req.params.id;
-        const event = await Events.findOne({_id: eventId})
-        return res.status(200).send({event});
-
-    } catch (error) {
-        console.log(error);
-        return error;
-    }
-};
-//Get de los  eventos adminHotel
-
-exports.getEventsadminHotel = async (req, res)=>{
-    try {
-        const adminHotelId = req.adminHotel.sub
-        const events = await Events.find({adminHotel: adminHotelId});
-        return res.status(200).send({events});
-
-    } catch (error) {
-        console.log(error);
-        return error;
-    }
-};
-
-//Get de un solo evento adminHotel
-exports.getEventadminHotel = async (req, res)=>{
-    try {
-        const eventId = req.params.id;
-        const event = await Events.findOne({_id: eventId})
-        return res.status(200).send({event});
-
-    } catch (error) {
-        console.log(error);
-        return error;
-    }
-};
-
 
 //Eliminar un evento
 exports.deleteEvent = async(req, res)=>{
@@ -139,11 +87,14 @@ exports.deleteEvent = async(req, res)=>{
     }
 };
 
-//Ver eventos de un hotel
-exports.getEventsHotel = async(req, res)=>{
+
+
+
+//Mostrar todos los eventos de un Hotel
+exports.getEvents = async(req, res)=>{
     try {
-        const hotelId = req.params.id;
-        const events = await Events.find({hotel: hotelId}).populate('hotel');
+        const idHotel = req.params.idHotel;
+        const events = await Events.find({hotel: idHotel});
 
         return res.status(200).send({events});
         
@@ -153,3 +104,15 @@ exports.getEventsHotel = async(req, res)=>{
     }
 };
 
+//Mostar solo un evento
+exports.getEvent = async (req, res)=>{
+    try {
+        const idEvent = req.params.idEvent;
+        const event = await Events.findOne({_id: idEvent})
+        return res.status(200).send({event});
+
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};

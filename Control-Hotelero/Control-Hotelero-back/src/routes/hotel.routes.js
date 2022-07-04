@@ -6,15 +6,18 @@ const mdAuth = require('../services/authenticated');
 
 
 const api = express.Router();
-
-// users
-api.get('/getHotels',  hotelController.getHotels);
-api.get('/getHotel/:id', [mdAuth.ensureAuth], hotelController.getHotel);
-
-// adminHotel
-api.get('/getHotelAdmin', [mdAuth.ensureAuth1, mdAuth.isAdminHotel], hotelController.getHotelAdmin);
+//Admin-App
 api.post('/addHotel', [mdAuth.ensureAuth, mdAuth.isAdmin], hotelController.addHotel);
+api.delete('/deleteHotel', [mdAuth.ensureAuth, mdAuth.isAdmin], hotelController.deleteHotel);
 
+//Admin -App y Admin-Hotel
+api.put('/updateHotel', [mdAuth.ensureAuth], hotelController.updateHotel);
+//Clientes
+api.get('/getHoteles', hotelController.getHoteles);
+api.get('/getHotel', [mdAuth.ensureAuth], hotelController.getHotel);
 
-module.exports = api;
+//Admin-Hotel
+api.get('/getHotelByAdmin', [mdAuth.ensureAuth1], hotelController.getHotelByAdmin)
+
+module.exports = api; 
 

@@ -13,6 +13,7 @@ const eventRoutes = require('../src/routes/events.routes');
 const roomRoutes = require('../src/routes/rooms.routes');
 const serviceRoutes = require('../src/routes/serviceHotel.routes');
 const reservationRoutes = require('../src/routes/reservations.routes');
+const invoiceRoutes = require ('../src/routes/invoice.routes');
 
 
 const app = express();
@@ -29,7 +30,8 @@ app.use('/hotel', hotelRoutes);
 app.use('/event', eventRoutes);
 app.use('/room', roomRoutes);
 app.use('/service', serviceRoutes);
-app.use('/reservation', reservationRoutes)
+app.use('/reservation', reservationRoutes);
+app.use('/invoice', invoiceRoutes);
 
 exports.initServer = ()=> app.listen(port, ()=>{
     console.log(`Listening on port ${port}`)

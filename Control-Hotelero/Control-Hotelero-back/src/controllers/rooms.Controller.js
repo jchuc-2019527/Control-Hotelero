@@ -88,80 +88,29 @@ exports.deleteRoom = async(req, res)=>{
     }
 };
 
-//Get rooms, user
-exports.getRooms = async (req, res)=>{
+//Mostrar todos las Habitaciones de un Hotel
+exports.getRooms = async(req, res)=>{
     try {
-        const userId = req.user.sub
-        const rooms = await Room.find({user: userId});
-        return res.status(200).send({rooms});
+        const idHotel = req.params.idHotel;
+        const events = await Room.find({hotel: idHotel});
 
-    } catch (error) {
-        console.log(error);
-        return error;
-    }
-};
-
-//Get room, user
-exports.getRoom = async (req, res)=>{
-    try {
-        const roomId = req.params.id;
-        const room = await Room.findOne({_id: roomId})
-        return res.status(200).send({room});
-
-    } catch (error) {
-        console.log(error);
-        return error;
-    }
-};
-//Get rooms, adminHotel
-
-exports.getRoomsAdminHotel = async (req, res)=>{
-    try {
-        const adminHotelId = req.adminHotel.sub
-        const rooms = await Room.find({adminHotel: adminHotelId});
-        return res.status(200).send({rooms});
-
-    } catch (error) {
-        console.log(error);
-        return error;
-    }
-};
-
-//Get room, adminHotel
-exports.getRoomAdminHotel = async (req, res)=>{
-    try {
-        const roomId = req.params.id;
-        const room = await Room.findOne({_id: roomId})
-        return res.status(200).send({room});
-
-    } catch (error) {
-        console.log(error);
-        return error;
-    }
-};
-
-//Ver habitaciones por hotel
-exports.getRoomsUser = async(req, res)=>{
-    try {
-        const hotelId = req.params.id;
-        const rooms = await Room.find({hotel: hotelId}).populate('hotel');
-
-        return res.status(200).send({rooms});
+        return res.status(200).send({events});
         
     } catch (error) {
         console.log(error);
         return error;
     }
 };
-//Buscar habitaciones que esten disponibles, adminHotel
-exports.getAviableRooms = async(req, res)=>{
-    try{
-        const hotelId = req.params.id;
-        const rooms = await Room.find({hotel: hotelId, status: false})
-        return res.send({rooms});
 
-    }catch(err){
-        console.log(err);
-        return res.status(500).send({message: 'Error searching aviable rooms'});
+//Mostar solo una Habitación
+exports.getRoom = async (req, res)=>{
+    try {
+        const idRoom = req.params.idRoom;
+        const event = await Room.findOne({_id: idRoom})
+        return res.status(200).send({event});
+
+    } catch (error) {
+        console.log(error);
+        return error;
     }
-}
+};

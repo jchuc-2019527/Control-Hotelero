@@ -18,8 +18,14 @@
                     <h5>Contacto: {{hotel.phone}}</h5>
                     <h5>Email: {{hotel.email}}</h5>
                     <div>
-                    <div class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
+                    <div *ngIf="role != 'ADMIN-APP'" class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
                         <button id="a" class="btn btn-success "  >Ver más</button>
+                      </div>
+                      <div *ngIf="role == 'ADMIN-APP'" class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
+                        <button id="a" class="btn btn-success "  >Elimnar</button>
+                      </div>
+                      <div *ngIf="role != 'CLIENT'" class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
+                        <button id="a" class="btn btn-success "  >Editar</button>
                       </div>
                     </div>
                 </div>
