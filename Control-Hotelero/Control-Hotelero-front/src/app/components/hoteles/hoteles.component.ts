@@ -17,6 +17,18 @@ export class HotelesComponent implements OnInit {
   adminHotel: adminHotelModel;
   token:any;
   role:string = ''; 
+  createHotel = {
+    nameHotel: "",
+    direction: "",
+    phone: "",
+    email: "",
+    request: 0,
+    adminHotel: "",
+    name:"",
+    username:"",
+    password:"",
+    role:""
+  }
 
 
   constructor(
@@ -46,10 +58,10 @@ export class HotelesComponent implements OnInit {
   };  
 
   addHotel(addHotelForm:any){
-    this.hotelRest.addHotel(this.hotel).subscribe({
+    this.hotelRest.addHotel(this.createHotel).subscribe({
       next:(res:any)=>{
         Swal.fire({
-          title: res.message + '  ' + res.hotel.nameHotel,
+          title: res.message,
           icon: 'success',
           showConfirmButton: false,
           timer: 2000,
