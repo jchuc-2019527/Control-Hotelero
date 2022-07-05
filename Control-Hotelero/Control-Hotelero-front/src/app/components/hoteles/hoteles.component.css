@@ -11,6 +11,13 @@ body{
     margin-right: 2%;
     
 }
+#menu{
+  background: #273746;
+  height: auto;
+}
+#regresar{
+ margin: 1rem;
+}
 
 .container{
   margin-top: 2%;

@@ -1,0 +1,40 @@
+
+<app-nav-bar></app-nav-bar>
+<br>
+<div style="padding: 1rem ;">
+  <button *ngIf="role == 'CLIENT'" style="margin-left: 2rem;" class="btn btn-outline-dark btn-lg "> Realizar Reservación </button>
+  <button *ngIf="role == 'ADMIN-HOTEL'" style="margin-left: 2rem;" class="btn btn-outline-dark btn-lg "> Ver Historial</button>
+</div>
+
+
+<div style="text-align: center; margin: 2rem;">
+    <h1>Habitaciones</h1>
+    <button *ngIf="role == 'ADMIN-HOTEL'" style="float:right; margin: 1rem;" id="addRoom" class="btn btn-success "> Agregar Habitación </button>
+</div>
+
+<div class="m-5">
+    <table class="table">
+        <thead class="table-primary">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Precio</th>
+            <th *ngIf="role =='ADMIN-HOTEL'" scope="col">Actualizar</th>
+            <th *ngIf="role =='ADMIN-HOTEL'"  scope="col">Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let room of rooms, let i = index">
+            <td>{{i+1}}</td>
+            <td>{{room.name}}</td>
+            <td>{{room.type}}</td>
+            <td>{{'Q ' + room.price}}</td>
+            <td *ngIf="role =='ADMIN-HOTEL'">{{'Q ' + room.price}}</td>
+            <td *ngIf="role =='ADMIN-HOTEL'">{{'Q ' + room.price}}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    
+</div>

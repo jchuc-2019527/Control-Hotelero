@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { APP_ID, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { UserRestService } from '../userRest/user-rest.service';
@@ -26,4 +26,28 @@ export class HotelRestService {
     return this.http.post(environment.baseUrl + 'hotel/addHotel' ,params, {headers:this.httOptions});
   };
 
+  /*Rooms*/
+
+  getRooms(idHotel: string){
+    return this.http.get(environment.baseUrl + 'room/getRooms/' + idHotel, {headers:this.httOptions})
+  }
+
+  getRoom(idRoom: string){
+    return this.http.get(environment.baseUrl + 'room/getRoom/' + idRoom, {headers:this.httOptions})
+  }
+
+
+  addRoom (params:{}){
+    return this.http.post(environment.baseUrl + 'room/addRoom', params, {headers:this.httOptions})
+  };
+
+  updateRoom(id:string, params:{}){
+    return this.http.put(environment.baseUrl + 'room/updateRoom/' + id, params, {headers:this.httOptions})
+  };
+
+  deleteRoom( id:string){
+    return this.http.delete(environment.baseUrl + 'room/deleteRoom/' + id, {headers:this.httOptions})
+  };
+
+  
 }

@@ -92,9 +92,9 @@ exports.deleteRoom = async(req, res)=>{
 exports.getRooms = async(req, res)=>{
     try {
         const idHotel = req.params.idHotel;
-        const events = await Room.find({hotel: idHotel});
+        const rooms = await Room.find({hotel: idHotel});
 
-        return res.status(200).send({events});
+        return res.status(200).send({rooms});
         
     } catch (error) {
         console.log(error);
@@ -106,8 +106,8 @@ exports.getRooms = async(req, res)=>{
 exports.getRoom = async (req, res)=>{
     try {
         const idRoom = req.params.idRoom;
-        const event = await Room.findOne({_id: idRoom})
-        return res.status(200).send({event});
+        const room = await Room.findOne({_id: idRoom})
+        return res.status(200).send({room});
 
     } catch (error) {
         console.log(error);

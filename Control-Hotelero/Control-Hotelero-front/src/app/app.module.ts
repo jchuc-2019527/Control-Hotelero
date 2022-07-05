@@ -8,13 +8,15 @@ import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FormsModule } from '@angular/forms';
 import { HotelesComponent } from './components/hoteles/hoteles.component';
+import { InfoHotelsComponent } from './components/info-hotels/info-hotels.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavBarComponent,
-    HotelesComponent
+    HotelesComponent,
+    InfoHotelsComponent
   ],
   imports: [
     BrowserModule,

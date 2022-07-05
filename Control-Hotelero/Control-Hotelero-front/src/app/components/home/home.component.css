@@ -1,6 +1,20 @@
 #menu{
-  background: #384044;
+  background: #273746;
   padding-left: 41%;
+  height: auto;
+}
+#textBarra{
+  margin: 0.4rem ;
+}
+
+#bienvenida{
+  margin: 2rem;
+  font-size: 4rem;
+}
+
+#textBarra:hover{
+  background-color:#F9E79F; 
+  border-radius: 2rem;
 }
 #menu ul li{
   display: inline-block;
@@ -10,7 +24,7 @@
 #menu ul li a{
   display: block;
   padding: 15px;
-  color: rgba(226, 235, 238, 0.938);
+  color: white;
 }
 
 #menu ul li:hover{
@@ -20,7 +34,7 @@
 
 #menu ul li:hover a{
   display: block;
-  color: rgb(25, 112, 146);
+  color: black;
 
 }
 
@@ -58,7 +72,7 @@
         -webkit-box-flex: 0;
         -ms-flex: 0 0 50%;
         flex: 0 0 50%; }
-  .modal .cancel {
+  .modal .oncel {
     color: gray;
     font-size: 17px; }
   .modal .btn-primary {

@@ -79,4 +79,6 @@ export class HotelesComponent implements OnInit {
     })
   };
 
+  
+
 }

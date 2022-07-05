@@ -1,7 +1,15 @@
-<app-nav-bar></app-nav-bar>
+<nav *ngIf="role !='CLIENT' and role !='ADMIN-APP' and role !='ADMIN-HOTEL'" id="menu">
+  <button id="regresar" class="btn btn-success " routerLink="/home"> Regresar </button>
+</nav>
+<app-nav-bar *ngIf="role =='CLIENT' and role =='ADMIN-APP' and role =='ADMIN-HOTEL'"></app-nav-bar>
 <br>
 <br>
+
 <span *ngIf="role =='ADMIN-APP'"  style="margin-left: 160vh;" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"><a  ></a></span>
+<div style="text-align: center;">
+  <h1>HOTELES</h1>
+  <hr>
+</div>
 <body >
     <div class="row">
     <div class="container"  *ngFor="let hotel of hotels">
@@ -18,13 +26,13 @@
                     <h5>Contacto: {{hotel.phone}}</h5>
                     <h5>Email: {{hotel.email}}</h5>
                     <div>
-                    <div *ngIf="role != 'ADMIN-APP'" class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
-                        <button id="a" class="btn btn-success "  >Ver más</button>
+                    <div *ngIf="role == 'CLIENT'" class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
+                        <button id="a" class="btn btn-success "  [routerLink]="['/dataHotels/' + hotel._id]" >Ver más</button>
                       </div>
                       <div *ngIf="role == 'ADMIN-APP'" class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
                         <button id="a" class="btn btn-success "  >Elimnar</button>
                       </div>
-                      <div *ngIf="role != 'CLIENT'" class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
+                      <div *ngIf="role == 'ADMIN-APP' and role =='ADMIN-HOTEL'" class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
                         <button id="a" class="btn btn-success "  >Editar</button>
                       </div>
                     </div>
@@ -46,7 +54,7 @@
             <div class="bg-image promo-img mr-3" style="background-image: url('../../../assets/img/agHotel.png');">
             </div>
             <div class="content-text p-4">
-              <h3>Agregar Hotel</h3>
+              <h3 *ngIf="role === 'ADMIN-APP'">Agregar Hotel</h3>
               <form #addHotelForm="ngForm">
                 <div class="form-group">
                   <label for="name">Nombre del AdminHotel</label>
