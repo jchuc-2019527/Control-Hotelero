@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
         })
         localStorage.setItem('token', res.token);
         localStorage.setItem('identity', JSON.stringify(res.search));
-        this.router.navigateByUrl('/hoteles');
+        this.router.navigateByUrl('/bienvenida');
 
       },
       error:(err)=>Swal.fire({

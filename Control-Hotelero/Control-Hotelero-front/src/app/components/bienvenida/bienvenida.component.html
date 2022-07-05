@@ -1,0 +1,24 @@
+
+<body>
+    <app-nav-bar></app-nav-bar>
+    <div id="turquesa">
+        <div style="padding: 1rem ;">
+            <button *ngIf="role == 'ADMIN-HOTEL'" [routerLink]="['/dataHotels/' + hotel]"  class="btn btn-light btn-lg "> Observar Mi Hotel</button>
+          </div>
+    
+        <div class="divimg">
+            <img id="img1" src="../../../assets/img/bienvenido.png" alt="">
+        </div>
+    
+        <div class="divs">
+            <h1 >BIENVENIDO</h1>
+            <h2 >¡Es hora de reservar!</h2>
+            <img id="img" src="../../../assets/img/estrella.png" alt="">
+        </div>
+        
+    </div>
+    <div id="blanco">
+    
+    </div>
+    
+</body>

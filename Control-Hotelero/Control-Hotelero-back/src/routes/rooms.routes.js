@@ -10,8 +10,8 @@ api.put('/updateRoom/:id', [mdAuth.ensureAuth1, mdAuth.isAdminHotel], roomContro
 api.delete('/deleteRoom/:id', [mdAuth.ensureAuth1, mdAuth.isAdminHotel], roomController.deleteRoom);
 
 //Cliente y adminHotel
-api.get('/getRooms/:idHotel', [mdAuth.ensureAuth], roomController.getRooms);
-api.get('/getRoom/:idRoom', [mdAuth.ensureAuth], roomController.getRoom);
+api.get('/getRooms/:idHotel', roomController.getRooms);
+api.get('/getRoom/:idRoom', roomController.getRoom);
 
 
 

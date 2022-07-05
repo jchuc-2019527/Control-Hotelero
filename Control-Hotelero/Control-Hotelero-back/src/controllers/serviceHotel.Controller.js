@@ -85,9 +85,9 @@ exports.deleteService = async(req,res)=>{
 exports.getServices = async(req, res)=>{
     try {
         const idHotel = req.params.idHotel;
-        const events = await Service.find({hotel: idHotel});
+        const services = await Service.find({hotel: idHotel});
 
-        return res.status(200).send({events});
+        return res.status(200).send({services});
         
     } catch (error) {
         console.log(error);
@@ -99,8 +99,8 @@ exports.getServices = async(req, res)=>{
 exports.getService = async (req, res)=>{
     try {
         const idService = req.params.idService;
-        const event = await Service.findOne({_id: idService})
-        return res.status(200).send({event});
+        const service = await Service.findOne({_id: idService})
+        return res.status(200).send({service});
 
     } catch (error) {
         console.log(error);

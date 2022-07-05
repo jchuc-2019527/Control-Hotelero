@@ -10,8 +10,8 @@ api.delete('/deleteService/:id', [mdAuth.ensureAuth1, mdAuth.isAdminHotel], serv
 
 
 //Cliente y adminHotel
-api.get('/getServices/:idHotel', [mdAuth.ensureAuth], serviceController.getServices);
-api.get('getService/:idService', [mdAuth.ensureAuth], serviceController.getService);
+api.get('/getServices/:idHotel', serviceController.getServices);
+api.get('/getService/:idService', [mdAuth.ensureAuth1], serviceController.getService)
 
 
 module.exports = api;

@@ -2,39 +2,357 @@
 <app-nav-bar></app-nav-bar>
 <br>
 <div style="padding: 1rem ;">
-  <button *ngIf="role == 'CLIENT'" style="margin-left: 2rem;" class="btn btn-outline-dark btn-lg "> Realizar Reservación </button>
+  <button  *ngIf="role == 'CLIENT'" style="margin-left: 2rem;" class="btn btn-outline-dark btn-lg "> Realizar Reservación </button>
   <button *ngIf="role == 'ADMIN-HOTEL'" style="margin-left: 2rem;" class="btn btn-outline-dark btn-lg "> Ver Historial</button>
 </div>
 
-
+<!-- Habitaciones -->
 <div style="text-align: center; margin: 2rem;">
-    <h1>Habitaciones</h1>
-    <button *ngIf="role == 'ADMIN-HOTEL'" style="float:right; margin: 1rem;" id="addRoom" class="btn btn-success "> Agregar Habitación </button>
+  <h1>Habitaciones</h1>
+  <div *ngIf="role == 'ADMIN-HOTEL'" class="multi-buttonA"  style = "float: right; margin: 1rem;">
+    <button id="b" class="btn btn-success m-3 "
+    data-bs-toggle="modal" data-bs-target="#exampleModalCenterRoomAdd">AGREGAR HABITACIÓN</button>
+  </div>
 </div>
 
 <div class="m-5">
-    <table class="table">
-        <thead class="table-primary">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Descripción</th>
-            <th scope="col">Precio</th>
-            <th *ngIf="role =='ADMIN-HOTEL'" scope="col">Actualizar</th>
-            <th *ngIf="role =='ADMIN-HOTEL'"  scope="col">Eliminar</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let room of rooms, let i = index">
-            <td>{{i+1}}</td>
-            <td>{{room.name}}</td>
-            <td>{{room.type}}</td>
-            <td>{{'Q ' + room.price}}</td>
-            <td *ngIf="role =='ADMIN-HOTEL'">{{'Q ' + room.price}}</td>
-            <td *ngIf="role =='ADMIN-HOTEL'">{{'Q ' + room.price}}</td>
-          </tr>
-          
-        </tbody>
-      </table>
-    
+  <table class="table">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Precio</th>
+          <th *ngIf="role =='ADMIN-HOTEL'" scope="col">Actualizar</th>
+          <th *ngIf="role =='ADMIN-HOTEL'"  scope="col">Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let room of rooms, let i = index">
+          <td>{{i+1}}</td>
+          <td>{{room.name}}</td>
+          <td>{{room.type}}</td>
+          <td>{{'Q ' + room.price}}</td>
+          <td *ngIf="role == 'ADMIN-HOTEL'">
+             <div >
+            <i><img src="../../../assets/img/actualizar.png" alt="" width="40rem" height="40rem" (click)="getRoom(room._id)" data-bs-toggle="modal" data-bs-target="#exampleModalCenterRoomUpdate" ></i>
+          </div>
+        </td>
+        <td *ngIf="role == 'ADMIN-HOTEL'">
+          <div >
+              <i><img src="../../../assets/img/eliminar.png" alt="" width="40rem" height="40rem" (click)="deleteRoom(room._id)"></i>
+            </div>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+  
+</div>
+
+<!-- Servicios -->
+<div style="text-align: center; margin: 2rem;">
+<h1>Servicios</h1>
+<div *ngIf="role == 'ADMIN-HOTEL'" class="multi-buttonA"  style = "float: right; margin: 1rem;">
+  <button id="b" class="btn btn-success m-3 "
+  data-bs-toggle="modal" data-bs-target="#exampleModalCenterServiceAdd">AGREGAR SERVICIO</button>
+</div>
+</div>
+
+<div class="m-5">
+<table class="table">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio</th>
+        <th *ngIf="role =='ADMIN-HOTEL'" scope="col">Actualizar</th>
+        <th *ngIf="role =='ADMIN-HOTEL'"  scope="col">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let service of services, let i = index">
+        <td>{{i+1}}</td>
+        <td>{{service.name}}</td>
+        <td>{{'Q ' + service.price}}</td>
+        <td *ngIf="role == 'ADMIN-HOTEL'">
+           <div  >
+          <i><img src="../../../assets/img/actualizar.png" alt="" width="40rem" height="40rem" (click)="getService(service._id)"  data-bs-toggle="modal" data-bs-target="#exampleModalCenterServiceUpdate" ></i>
+        </div>
+      </td > 
+      <td *ngIf="role == 'ADMIN-HOTEL'">
+        <div >
+            <i><img src="../../../assets/img/eliminar.png" alt="" width="40rem" height="40rem" (click)="deleteService(service._id)" ></i>
+          </div>
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
+
+</div>
+
+<!-- Eventos -->
+
+<div style="text-align: center; margin: 2rem;">
+<h1>Eventos</h1>
+<div *ngIf="role == 'ADMIN-HOTEL'" class="multi-buttonA"  style = "float: right; margin: 1rem;">
+  <button id="b" class="btn btn-success m-3 "
+  data-bs-toggle="modal" data-bs-target="#exampleModalCenterEventAdd">AGREGAR EVENTO</button>
+</div>
+</div>
+
+<div class="m-5">
+<table class="table">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Tipo</th>
+        <th *ngIf="role =='ADMIN-HOTEL'" scope="col">Actualizar</th>
+        <th *ngIf="role =='ADMIN-HOTEL'"  scope="col">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events, let i = index">
+        <td>{{i+1}}</td>
+        <td>{{event.name}}</td>
+        <td>{{event.type}}</td>
+        <td *ngIf="role == 'ADMIN-HOTEL'">
+           <div >
+          <i><img src="../../../assets/img/actualizar.png" alt="" width="40rem" height="40rem" (click)="getEvent(event._id)"  data-bs-toggle="modal" data-bs-target="#exampleModalCenterEventUpdate" ></i>
+        </div>
+      </td>
+      <td *ngIf="role == 'ADMIN-HOTEL'">
+        <div >
+            <i><img src="../../../assets/img/eliminar.png" alt="" width="40rem" height="40rem" (click)="deleteEvent(event._id)" ></i>
+          </div>
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
+
+</div>
+<br>
+<br>
+<br>
+
+
+<!-- Modal Add Room -->
+<div class="modal fade" id="exampleModalCenterRoomAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+  <div class="modal-content rounded -0">
+    <div class="modal-body py-0">
+      <button  style="float:right" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="d-flex main-content">
+        <div class="bg-image promo-img mr-3" style="background-image: url('../../../assets/img/hab.jpg');">
+        </div>
+        <div class="content-text p-4">
+          <h3>Agregar Habitación</h3>
+          <form #addRoomForm="ngForm">
+            <div class="form-group">
+              <label for="name">Nombre de la habitación</label>
+              <input [(ngModel)]="room.name" name="name" type="text" class="form-control" id="name" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+              <label for="type">Tipo de habitación</label>
+              <input [(ngModel)]="room.type" name="type" type="text" class="form-control" id="type" placeholder="Tipo">
+            </div>
+            <div class="form-group">
+              <label for="price">Precio</label>
+              <input [(ngModel)]="room.price" name="price" type="number" class="form-control" id="price" placeholder="Precio">
+            </div>
+
+            <div class="form-group">
+              <div class="multi-buttonA" >
+              <button (click)="addRoom(addRoomForm)" class="btn btn-success m-3 "
+                data-bs-toggle="modal" >Guardar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- Modal Actualizar Room -->
+<div class="modal fade" id="exampleModalCenterRoomUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+  <div class="modal-content rounded -0">
+    <div class="modal-body py-0">
+      <button  style="float:right" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="d-flex main-content">
+        <div class="bg-image promo-img mr-3" style="background-image: url('../../../assets/img/habiAct.png');">
+        </div>
+        <div class="content-text p-4">
+          <h3>Actualizar Habitación</h3>
+          <form *ngIf="roomUpdate">
+            <div class="form-group">
+              <label for="name">Nombre de la habitación</label>
+              <input [(ngModel)]="roomUpdate.name" name="name" type="text" class="form-control" id="name" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+              <label for="type">Tipo de habitación</label>
+              <input [(ngModel)]="roomUpdate.type" name="type" type="text" class="form-control" id="type" placeholder="Type">
+            </div>
+            <label for="price">Precio</label>
+              <input [(ngModel)]="roomUpdate.price" name="price" type="number" class="form-control" id="price" placeholder="Precio">
+            <div class="form-group">
+              <div class="multi-buttonA" >
+                <button (click)="updateRoom()" class="btn btn-success m-3 "
+                data-bs-toggle="modal" >Actualizar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- Modal Add Service -->
+<div class="modal fade" id="exampleModalCenterServiceAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+  <div class="modal-content rounded -0">
+    <div class="modal-body py-0">
+      <button  style="float:right" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="d-flex main-content">
+        <div class="bg-image promo-img mr-3" style="background-image: url('../../../assets/img/servicio.jpg');">
+        </div>
+        <div class="content-text p-4">
+          <h3>Agregar Servicio</h3>
+          <form #addServiceForm="ngForm">
+            <div class="form-group">
+              <label for="name">Nombre del Servicio</label>
+              <input [(ngModel)]="service.name" name="name" type="text" class="form-control" id="name" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+              <label for="price">Precio</label>
+              <input [(ngModel)]="service.price" name="price" type="number" class="form-control" id="price" placeholder="Precio">
+            </div>
+
+            <div class="form-group">
+              <div class="multi-buttonA" >
+              <button (click)="addService(addServiceForm)" class="btn btn-success m-3 "
+                data-bs-toggle="modal" >Guardar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Modal Actualizar Service -->
+<div class="modal fade" id="exampleModalCenterServiceUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+  <div class="modal-content rounded -0">
+    <div class="modal-body py-0">
+      <button  style="float:right" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="d-flex main-content">
+        <div class="bg-image promo-img mr-3" style="background-image: url('../../../assets/img/serviceAc.jpg');">
+        </div>
+        <div class="content-text p-4">
+          <h3>Actualizar Servicio</h3>
+          <form *ngIf="serviceUpdate">
+            <div class="form-group">
+              <label for="name">Nombre del Servicio</label>
+              <input [(ngModel)]="serviceUpdate.name" name="name" type="text" class="form-control" id="name" placeholder="Nombre">
+            </div>
+            <label for="price">Precio</label>
+              <input [(ngModel)]="serviceUpdate.price" name="price" type="number" class="form-control" id="price" placeholder="Precio">
+            <div class="form-group">
+              <div class="multi-buttonA" >
+                <button (click)="updateService()" class="btn btn-success m-3 "
+                data-bs-toggle="modal" >Actualizar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Modal Add Event -->
+<div class="modal fade" id="exampleModalCenterEventAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+  <div class="modal-content rounded -0">
+    <div class="modal-body py-0">
+      <button  style="float:right" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="d-flex main-content">
+        <div class="bg-image promo-img mr-3" style="background-image: url('../../../assets/img/hab.jpg');">
+        </div>
+        <div class="content-text p-4">
+          <h3>Agregar Evento</h3>
+          <form #addEventForm="ngForm">
+            <div class="form-group">
+              <label for="name">Nombre del Evento</label>
+              <input [(ngModel)]="event.name" name="name" type="text" class="form-control" id="name" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+              <label for="type">Tipo de Evento</label>
+              <input [(ngModel)]="event.type" name="type" type="text" class="form-control" id="type" placeholder="Tipo">
+            </div>
+            <div class="form-group">
+              <div class="multi-buttonA" >
+              <button (click)="addEvent(addEventForm)" class="btn btn-success m-3 "
+                data-bs-toggle="modal" >Guardar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Modal Actualizar Event -->
+<div class="modal fade" id="exampleModalCenterEventUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+  <div class="modal-content rounded -0">
+    <div class="modal-body py-0">
+      <button  style="float:right" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="d-flex main-content">
+        <div class="bg-image promo-img mr-3" style="background-image: url('../../../assets/img/habiAct.png');">
+        </div>
+        <div class="content-text p-4">
+          <h3>Actualizar Evento</h3>
+          <form *ngIf="eventUpdate">
+            <div class="form-group">
+              <label for="name">Nombre del Evento</label>
+              <input [(ngModel)]="eventUpdate.name" name="name" type="text" class="form-control" id="name" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+              <label for="type">Tipo de Evento</label>
+              <input [(ngModel)]="eventUpdate.type" name="type" type="text" class="form-control" id="type" placeholder="Type">
+            </div>
+            <div class="form-group">
+              <div class="multi-buttonA" >
+                <button (click)="updateEvent()" class="btn btn-success m-3 "
+                data-bs-toggle="modal" >Actualizar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 </div>

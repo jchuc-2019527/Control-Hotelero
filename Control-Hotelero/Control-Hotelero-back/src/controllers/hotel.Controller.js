@@ -134,7 +134,8 @@ exports.getHotelByAdmin = async (req, res)=>{
     try {
         const idAdmin = req.adminHotel.sub
         const hotel = await Hotel.findOne({adminHotel: idAdmin})
-        return res.status(200).send({hotel});
+        const hotelId = hotel._id
+        return res.status(200).send({hotelId});
     } catch (error) {
         console.log(error);
         return error;

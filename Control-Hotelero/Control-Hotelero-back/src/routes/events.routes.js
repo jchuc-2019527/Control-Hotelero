@@ -13,8 +13,9 @@ api.put('/updateEvent/:id', [mdAuth.ensureAuth1, mdAuth.isAdminHotel], eventCont
 api.delete('/deleteEvent/:id', [mdAuth.ensureAuth1, mdAuth.isAdminHotel], eventController.deleteEvent);
 
 //Cliente y adminHotel
-api.get('/getEvents/:idHotel', [mdAuth.ensureAuth], eventController.getEvents);
-api.get('/getEvent/:idEvent', [mdAuth.ensureAuth], eventController.getEvent)
+api.get('/getEvents/:idHotel', eventController.getEvents);
+
+api.get('/getEvent/:idEvent',[mdAuth.ensureAuth1] ,eventController.getEvent);
 
 
 module.exports = api;

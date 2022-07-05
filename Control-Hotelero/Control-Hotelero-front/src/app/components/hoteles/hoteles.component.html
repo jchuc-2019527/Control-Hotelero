@@ -1,7 +1,8 @@
-<nav *ngIf="role !='CLIENT' and role !='ADMIN-APP' and role !='ADMIN-HOTEL'" id="menu">
+<nav *ngIf="!role" id="menu">
   <button id="regresar" class="btn btn-success " routerLink="/home"> Regresar </button>
 </nav>
-<app-nav-bar *ngIf="role =='CLIENT' and role =='ADMIN-APP' and role =='ADMIN-HOTEL'"></app-nav-bar>
+
+<app-nav-bar *ngIf="role"></app-nav-bar>
 <br>
 <br>
 

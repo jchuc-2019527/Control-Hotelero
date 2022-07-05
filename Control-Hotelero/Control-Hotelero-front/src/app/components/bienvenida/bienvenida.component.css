@@ -1,0 +1,44 @@
+html, body{
+    height:80vh;
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+#turquesa{
+    background-color: #17A589;
+    
+    text-align: center;
+    
+    
+    width: 100%;
+    height: 100%;
+    
+}
+#img1{
+    display: flex;
+    align-content: center;
+    height: 20%;
+    width: 20%;
+    
+    margin: auto;
+    
+    padding-top: 5%;
+}
+#img{
+    height: 3%;
+    width: 3%;
+}
+
+h1{
+    font-size: 400%;
+    color: white;
+    
+}
+h2{
+    color:white
+}
+.divs{
+    margin-bottom: 2rem;
+    padding: 3rem;
+}
