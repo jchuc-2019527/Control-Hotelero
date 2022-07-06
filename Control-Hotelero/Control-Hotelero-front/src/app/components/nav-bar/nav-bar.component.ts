@@ -9,8 +9,9 @@ import { AdminAppRestService } from 'src/app/services/adminAppRest/admin-app-res
 export class NavBarComponent implements OnInit {
   token:any;
   role:string = ''; 
+  id: string = '';
   constructor(
-    private adminAppRest: AdminAppRestService
+    private adminAppRest: AdminAppRestService,
   ) { }
 
   ngOnInit(): void {

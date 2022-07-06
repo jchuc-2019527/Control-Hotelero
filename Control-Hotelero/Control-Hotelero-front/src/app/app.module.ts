@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { HotelesComponent } from './components/hoteles/hoteles.component';
 import { InfoHotelsComponent } from './components/info-hotels/info-hotels.component';
 import { BienvenidaComponent } from './components/bienvenida/bienvenida.component';
+import { HistorialComponent } from './components/historial/historial.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BienvenidaComponent } from './components/bienvenida/bienvenida.componen
     NavBarComponent,
     HotelesComponent,
     InfoHotelsComponent,
-    BienvenidaComponent
+    BienvenidaComponent,
+    HistorialComponent
   ],
   imports: [
     BrowserModule,

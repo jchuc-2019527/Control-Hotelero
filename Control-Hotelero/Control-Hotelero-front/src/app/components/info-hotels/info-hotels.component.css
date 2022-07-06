@@ -136,7 +136,7 @@
     position: absolute;
     content: "Historial";
     height: 55px;
-    width: 315px;
+    width: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -156,3 +156,5 @@
   span a:hover{
     transform: translateZ(-25px) rotateX(-90deg);
   }
+
+  

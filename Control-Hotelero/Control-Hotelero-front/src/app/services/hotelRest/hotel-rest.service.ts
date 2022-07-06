@@ -21,7 +21,9 @@ export class HotelRestService {
   getHotels(){
     return this.http.get(environment.baseUrl + 'hotel/getHoteles', {headers:this.httOptions});
   };
-
+  getHotel(idHotel: string){
+    return this.http.get(environment.baseUrl + 'hotel/getHotel/' + idHotel, {headers:this.httOptions});
+  };
   addHotel(params: {}){
     return this.http.post(environment.baseUrl + 'hotel/addHotel' ,params, {headers:this.httOptions});
   };
@@ -29,6 +31,15 @@ export class HotelRestService {
   getHotelByAdmin(){
     return this.http.get(environment.baseUrl + 'hotel/getHotelByAdmin', {headers:this.httOptions})
   }
+
+  updateHotel(idHotel:string, params:{}){
+    return this.http.put(environment.baseUrl + 'hotel/updateHotel/' + idHotel, params,  {headers: this.httOptions});
+   };
+
+   deleteHotel(idHotel: string){
+    return this.http.delete(environment.baseUrl + 'hotel/deleteHotel/' + idHotel, {headers: this.httOptions});
+   };
+
 
 /*Rooms*/
 

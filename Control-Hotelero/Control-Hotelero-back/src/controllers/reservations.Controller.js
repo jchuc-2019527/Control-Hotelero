@@ -197,7 +197,7 @@ exports.confirmateReservation = async (req, res) => {
 exports.getReservations = async (req, res) => {
     try {
         const idClient = req.user.sub;
-        const reservations = await Reservation.find({user: idClient});
+        const reservations = await Reservation.find({user: idClient}).populate('user').populate('hotel').populate('room');
         return res.status(200).send({reservations});
     } catch (err) {
         console.log(err);

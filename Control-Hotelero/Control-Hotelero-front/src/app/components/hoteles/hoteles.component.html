@@ -31,10 +31,10 @@
                         <button id="a" class="btn btn-success "  [routerLink]="['/dataHotels/' + hotel._id]" >Ver más</button>
                       </div>
                       <div *ngIf="role == 'ADMIN-APP'" class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
-                        <button id="a" class="btn btn-success "  >Elimnar</button>
+                        <button id="a" class="btn btn-success"  (click)="deleteHotel(hotel._id)" >Elimnar</button>
                       </div>
                       <div *ngIf="role == 'ADMIN-APP' and role =='ADMIN-HOTEL'" class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
-                        <button id="a" class="btn btn-success "  >Editar</button>
+                        <button (click)="getHotel(hotel._id)" id="a" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModalCenterHotelUpdate" >Editar</button>
                       </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                     <label for="email">Email</label>
                     <input [(ngModel)]="createHotel.email" name="email" type="text" class="form-control" id="email" placeholder="Email">
                   </div>
-  
+
                 <div class="form-group">
                   <div class="multi-buttonA" >
                   <button (click)="addHotel(addHotelForm)" class="btn btn-success m-3 "
@@ -95,8 +95,47 @@
               </form>
             </div>
           </div>
-  
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Modal Actualizar Hotel -->
+<div class="modal fade" id="exampleModalCenterHotelUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content rounded -0">
+      <div class="modal-body py-0">
+        <button  style="float:right" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="d-flex main-content">
+          <div class="bg-image promo-img mr-3" style="background-image: url('../../../assets/img/habiAct.png');">
+          </div>
+          <div class="content-text p-4">
+            <h3>Actualizar Hotel</h3>
+            <form *ngIf="hotelUpdate">
+              <div class="form-group">
+                <label for="nameHotel">Nombre del hotel</label>
+                <input [(ngModel)]="hotelUpdate.nameHotel" name="nameHotel" type="text" class="form-control" id="nameHotel" placeholder="Nombre de hotel">
+              </div>
+              <div class="form-group">
+                <label for="direction">Direccion del hotel</label>
+                <input [(ngModel)]="hotelUpdate.direction" name="direction" type="text" class="form-control" id="direction" placeholder="Direccion">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input [(ngModel)]="hotelUpdate.email" name="email" type="text" class="form-control" id="email" placeholder="Email">
+              </div>
+              <label for="phone">Telefono</label>
+                <input [(ngModel)]="hotelUpdate.phone" name="phone" type="number" class="form-control" id="phone" placeholder="Telefono">
+              <div class="form-group">
+                <div class="multi-buttonA" >
+                  <button (click)="updateHotel()" class="btn btn-success m-3 "
+                  data-bs-toggle="modal" >Actualizar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

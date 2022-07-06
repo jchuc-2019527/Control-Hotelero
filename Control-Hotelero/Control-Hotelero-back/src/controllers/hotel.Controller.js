@@ -62,7 +62,7 @@ exports.addHotel = async(req, res)=>{
 exports.deleteHotel = async (req,res)=>{
     try {
         const idHotel = req.params.idHotel
-        const hotelExist = await Ho.findOne({_id: idHotel});
+        const hotelExist = await Hotel.findOne({_id: idHotel});
         if(hotelExist){
             const deleteHotel = await Hotel.findOneAndDelete({_id: idHotel});
             const deleteRoom = await Room.deleteMany({hotel: idHotel});
@@ -73,21 +73,21 @@ exports.deleteHotel = async (req,res)=>{
         }else{
             return res.status(400).send({message:'Hotel not found'})
         }
-        
+
     } catch (error) {
         console.log(error);
         return error;
     }
 };
 
- exports.updateHotel = async(req, res)=>{
+exports.updateHotel = async(req, res)=>{
     try {
         const idHotel = req.params.idHotel
         const params = req.body;
-        const hotelExist = await Ho.findOne({_id: idHotel});
+        const hotelExist = await Hotel.findOne({_id: idHotel});
         if(hotelExist){
             const hotelName = await Hotel.findOne({name: params.nameHotel})
-            if(hotelName && hotelExist.nameHotel != params.nameHotel){
+            if(hotelName && hotelExist.nameHotel == params.nameHotel){
                 return res.status(400).send({message:'Name already in use'})
             }else{
                 const updateHotel = await Hotel.findOneAndUpdate({_id: idHotel}, params, {new:true});

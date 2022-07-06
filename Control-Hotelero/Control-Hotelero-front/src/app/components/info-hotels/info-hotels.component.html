@@ -3,7 +3,7 @@
 <br>
 <div style="padding: 1rem ;">
   <button  *ngIf="role == 'CLIENT'" style="margin-left: 2rem;" class="btn btn-outline-dark btn-lg "> Realizar Reservación </button>
-  <button *ngIf="role == 'ADMIN-HOTEL'" style="margin-left: 2rem;" class="btn btn-outline-dark btn-lg "> Ver Historial</button>
+  <span *ngIf="role == 'ADMIN-HOTEL'" style="margin-left: 2rem;" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"><a  ></a></span>
 </div>
 
 <!-- Habitaciones -->
