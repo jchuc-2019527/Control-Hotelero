@@ -18,7 +18,7 @@ export class BienvenidaComponent implements OnInit {
 
   ngOnInit(): void {
     this.role = this.adminAppRest.getIdentity().role;
-    this.getHotelByAdmin()
+    
 
   };
 

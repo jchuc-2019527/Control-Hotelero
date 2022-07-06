@@ -9,7 +9,7 @@ import { reservationModel } from 'src/app/models/reservation.model';
   styleUrls: ['./historial.component.css']
 })
 export class HistorialComponent implements OnInit {
-
+services: any
 reservations: any;
 reservation: reservationModel;
 
@@ -23,11 +23,13 @@ reservation: reservationModel;
 
   ngOnInit(): void {
     this.getReservations();
-  }
+  };
+  
   getReservations(){
     this.reservationRest.getReservations().subscribe({
       next:(res:any)=>{
-        this.reservations = res.reservations
+        this.reservations = res.reservations;
+        
       },
       error:(err)=>{
         console.log(err.error.message || err.error)

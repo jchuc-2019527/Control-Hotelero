@@ -16,6 +16,23 @@ export class ReservationResService {
     private adminApp: AdminAppRestService
   ) { }
 
+  //Reservation:
+
+  createReservation(idClient:string,idHotel:string, params:any){
+    return this.http.post(environment.baseUrl + 'reservation/addReservation/' + idClient +'/'+ idHotel, params, {headers:this.httOptions});
+  };
+
+  updateToom(idReservation: string, room: any){
+    let body = JSON.stringify({room})
+    return this.http.put(environment.baseUrl + 'reservation/updateRoom/' + idReservation, body, {headers:this.httOptions});
+  };
+
+
+  getRooms(idHotel: string){
+      return this.http.get(environment.baseUrl + 'room/getRooms/' + idHotel, {headers:this.httOptions})
+  };
+  
+
   getReservations(){
     return this.http.get(environment.baseUrl + 'reservation/getReservations', {headers:this.httOptions})
   }

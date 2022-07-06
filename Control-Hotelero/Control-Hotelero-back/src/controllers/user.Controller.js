@@ -2,6 +2,9 @@
 const User = require('../models/user.model');
 const {validateData, encrypt, searchUser, checkPassword, searchAdminApp, searchAdminHotel, checkPermission,checkUpdate, alreadyUser} = require('../utils/validate');
 const {createToken, createToken1} = require('../services/jwt');
+const Reservation = require('../models/reservations.model');
+const Room = require('../models/rooms.model');
+const Client = require('../models/user.model')
 
 // Register Client
 exports.registerUser = async(req, res)=>{
@@ -85,38 +88,53 @@ exports.login = async (req, res) => {
 // Cliente - editar su cuenta
 exports.updateUser = async (req, res)=>{
     try{
-        const userId = req.params.id;
+        const userId = req.params.idClient;
         const params = req.body;
-        const permission = await checkPermission(userId, req.user.sub);
-        if(permission === false) return res.status(403).send({message: 'Unauthorized to update this user'});
-        else{
-            const notUpdated = await checkUpdate(params);
-            if(notUpdated === false) return res.status(400).send({message: 'Unable to update this data'});
-            const already = await searchUser(params.username);
-            if(!already){
-                const userUpdated = await User.findOneAndUpdate({_id: userId}, params, {new:true})
-                .lean()
-                return res.send({ userUpdated, message: 'User updated'});
-            }else{
-                return res.send({message: 'Username already exist'})
-            } 
-        }    
+        const userExist = await User.findOne({_id: userId})
+
+        const notUpdated = await checkUpdate(params);
+        if(notUpdated === false) return res.status(400).send({message: 'Unable to update this data'});
+        const already = await User.findOne({username: params.username})
+        if(already && userExist.username != params.username){
+            return res.status(400).send({message:'Username already in use'});
+        }else{
+            const userUpdate = await User.findOneAndUpdate({_id: userId}, params, {new:true});
+            return res.status(200).send({message:'User updated succesfuly', userUpdate});
+        }
     }catch(err){
         console.log(err);
         return err;
     }
-}
+};
 
-exports.deleteUser = async(req, res)=>{
-    try{
-        const userId = req.params.id;
-        const persmission = await checkPermission(userId, req.user.sub);
-        if(persmission === false) return res.status(403).send({message: 'You dont have permission to delete this user'});
-        const userDeleted = await User.findOneAndDelete({_id: userId});
-        if(userDeleted) return res.send({message: 'Account deleted', userDeleted});
-        return res.send({message: 'User not found or already deleted'});
-    }catch(err){
+//FUNCION PARA ELIMINAR UNA CUENTA
+exports.deleteUser = async (req, res) => {
+    try {
+        const idClient = req.params.idClient;
+        const reservations = await Reservation.find({idClient: idClient});
+        let reservationsNew = Object.values(reservations);
+        for(let i = 0; i < reservationsNew.length; i++){
+            var startReservation = reservationsNew[i].startDate;
+            var finalReservation = reservationsNew[i].finishDate;
+            var idRoom = reservationsNew[i].room;
+            const room = await Room.findOne({_id: idRoom});
+            const arrayDates = Object.values(room.dates);
+            arrayDates.forEach((item) => {
+                //ESTOS VIENEN DE LA DB
+                var start = item.date.startDate;
+                var final = item.date.finishDate;
+                
+                if(start.getTime() == startReservation.getTime() && final.getTime() == finalReservation.getTime()){
+                    arrayDates.splice(arrayDates.indexOf(item), 1);
+                }
+            });
+            const roomUpdated = await Room.findOneAndUpdate({_id: idRoom}, {dates: arrayDates}, {new: true});
+            const reservationDeleted = await Reservation.findOneAndDelete({_id: reservationsNew[i]._id});
+            const clientDeleted = await Client.findOneAndDelete({_id: idClient});
+        }
+        return res.status(200).send({message: "User Deleted"}); 
+    } catch (err) {
         console.log(err);
-        return res.status(500).send({err, message: 'Error deleting user'});
+        return err;
     }
-}    
+};

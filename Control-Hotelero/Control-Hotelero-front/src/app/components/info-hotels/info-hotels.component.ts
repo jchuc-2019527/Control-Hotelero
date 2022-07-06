@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HotelRestService } from 'src/app/services/hotelRest/hotel-rest.service';
 import { AdminAppRestService } from 'src/app/services/adminAppRest/admin-app-rest.service';
 import { roomModel } from 'src/app/models/room.model';
 import { serviceModel } from 'src/app/models/service.model';
 import { eventModel } from 'src/app/models/event.model';
 import Swal from 'sweetalert2';
+import { ReservationResService } from 'src/app/services/reservationRes/reservation-res.service';
+import { reservationModel } from 'src/app/models/reservation.model';
+
+
+
 @Component({
   selector: 'app-info-hotels',
   templateUrl: './info-hotels.component.html',
@@ -13,6 +18,10 @@ import Swal from 'sweetalert2';
 })
 export class InfoHotelsComponent implements OnInit {
   role:any;
+  idClient:any
+  idReservation:any
+  ruta:any
+
   idHotel : any;
 // habitaciones
   rooms: any;
@@ -29,14 +38,21 @@ events: any;
 event: eventModel;
 eventUpdate: any = [];
 
+  reservation: reservationModel;
+
   constructor(
     public activateRoute : ActivatedRoute,
     private hotelRest : HotelRestService,
-    private adminRest : AdminAppRestService
+    private adminRest : AdminAppRestService,
+    private reservationRest: ReservationResService,
+    private router:Router
+    
   ) {
+
     this.room = new roomModel('','','',0,[],'',false);
     this.service = new serviceModel('','',0,'');
     this.event = new eventModel('','','','');
+    this.reservation = new reservationModel('',new Date(),new Date(),'','','',[],0,false,0);
    }
 
   ngOnInit(): void {
@@ -44,6 +60,7 @@ eventUpdate: any = [];
       this.idHotel =idH.get('id');
     });
     this.role = this.adminRest.getIdentity().role;
+    this.idClient = this.adminRest.getIdentity()._id;
 
     this.getRooms()
     this.getServices()
@@ -62,7 +79,7 @@ eventUpdate: any = [];
   };
 
   getRoom(idRoom: string){
-    this.hotelRest.getRoom(idRoom).subscribe({
+    this.hotelRest.getRoom(idRoom,).subscribe({
       next:(res:any)=>{this.roomUpdate = res.room},
       error:(err)=>Swal.fire({
         title: err.error.message,
@@ -314,5 +331,21 @@ eventUpdate: any = [];
       })
     })
   };
+
+  //Reservación
+
+  createReservation(){
+    
+    this.reservationRest.createReservation(this.idClient,this.idHotel, this.reservation).subscribe({
+      next:(res:any)=>{
+        console.log(res.message)
+        console.log(res.reservation)
+         this.idReservation = res.reservation._id;
+         this.router.navigateByUrl('/reservationRoom/' + this.idReservation);
+      },
+      error:(err)=>
+        console.log(err.error.message || err.error)
+    })
+  }
 
 }

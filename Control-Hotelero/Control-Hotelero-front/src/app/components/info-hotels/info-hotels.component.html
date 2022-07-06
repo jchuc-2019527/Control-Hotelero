@@ -2,7 +2,7 @@
 <app-nav-bar></app-nav-bar>
 <br>
 <div style="padding: 1rem ;">
-  <button  *ngIf="role == 'CLIENT'" style="margin-left: 2rem;" class="btn btn-outline-dark btn-lg "> Realizar Reservación </button>
+  <button (click)="createReservation()"   *ngIf="role == 'CLIENT'" style="margin-left: 2rem;" class="btn btn-outline-dark btn-lg "> Realizar Reservación </button>
   <span *ngIf="role == 'ADMIN-HOTEL'" style="margin-left: 2rem;" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"><a  ></a></span>
 </div>
 

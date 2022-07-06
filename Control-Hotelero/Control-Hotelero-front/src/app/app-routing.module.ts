@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HotelesComponent } from './components/hoteles/hoteles.component';
 import { HistorialComponent } from './components/historial/historial.component';
 import { InfoHotelsComponent } from './components/info-hotels/info-hotels.component';
+import { ReservationRoomComponent } from './components/reservation-room/reservation-room.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'hoteles', component: HotelesComponent},
   {path: 'dataHotels/:id', component:InfoHotelsComponent},
   {path: 'bienvenida', component: BienvenidaComponent},
-  {path: 'historial', component: HistorialComponent}
+  {path: 'historial', component: HistorialComponent},
+  {path: 'reservationRoom/:id', component:ReservationRoomComponent}
 ];
 
 @NgModule({

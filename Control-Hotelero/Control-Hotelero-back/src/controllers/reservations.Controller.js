@@ -8,7 +8,7 @@ const Service = require ('../models/serviceHotel.model');
 //FUNCIÓN PARA CREAR UNA RESERVACIÓN CON SUS CAMPOS VACIOS
 exports.addReservation = async (req, res) => {
     try {
-        const idUser = req.user.sub;
+        const idUser = req.params.idClient;
         const idHotel = req.params.idHotel;
         const data = {
             startDate: "",
@@ -23,13 +23,13 @@ exports.addReservation = async (req, res) => {
         await reservation.save();
         return res.status(200).send({message: "Reservation created successfully", reservation});
     } catch (err) {
-        console.log(err);
+        console.log(err); 
         return err;
     }
 }
 
 //FUNCIÓN PARA ACTUALIZAR LA HABITACIÓN DE UNA RESERVACION
-exports.updateRoom = async (req, res) => {
+exports.updateRoom = async (req, res) => { 
     try {
         const idReservation = req.params.idReservation;
         const params = req.body;
@@ -190,6 +190,33 @@ exports.confirmateReservation = async (req, res) => {
         return err;
     }
 };
+ //Cancelar una Reservación
+exports.cancelReservation = async (req, res) => {
+    try {
+        const idReservation = req.params.idReservation;
+        const reservation = await Reservation.findOne({_id: idReservation});
+        const idRoom = reservation.room;
+        const room = await Room.findOne({_id: idRoom});
+        const arrayDates = Object.values(room.dates);
+        arrayDates.forEach((item) => {
+            //ESTOS VIENEN DE LA DB
+            var start = item.date.startDate;
+            var final = item.date.finishDate;
+            if(start.getTime() == reservation.startDate.getTime() && final.getTime() == reservation.finishDate.getTime()){
+                console.log(arrayDates);
+                console.log(arrayDates.indexOf(item));
+                arrayDates.splice(arrayDates.indexOf(item), 1);
+            }
+        });
+        const roomUpdated = await Room.findOneAndUpdate({_id: idRoom}, {dates: arrayDates}, {new: true});
+        const reservationDeleted = await Reservation.findOneAndDelete({_id: idReservation});
+        return res.status(200).send({message: "Reservation canceled successfuly"});
+        
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
+}
 
 
 
@@ -210,7 +237,7 @@ exports.getReservations = async (req, res) => {
 exports.getReservationsByHotel = async (req, res) => {
     try {
         const idHotel = req.params.idHotel;
-        const reservations = await Reservation.find({hotel: idHotel});
+        const reservations = await Reservation.find({hotel: idHotel}).populate('user').populate('hotel').populate('room');
         return res.status(200).send({reservations});
     } catch (err) {
         console.log(err);

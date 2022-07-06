@@ -11,6 +11,8 @@ import { HotelesComponent } from './components/hoteles/hoteles.component';
 import { InfoHotelsComponent } from './components/info-hotels/info-hotels.component';
 import { BienvenidaComponent } from './components/bienvenida/bienvenida.component';
 import { HistorialComponent } from './components/historial/historial.component';
+import { ReservationRoomComponent } from './components/reservation-room/reservation-room.component';
+import { PorfilComponent } from './components/porfil/porfil.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { HistorialComponent } from './components/historial/historial.component';
     HotelesComponent,
     InfoHotelsComponent,
     BienvenidaComponent,
-    HistorialComponent
+    HistorialComponent,
+    ReservationRoomComponent,
+    PorfilComponent
   ],
   imports: [
     BrowserModule,

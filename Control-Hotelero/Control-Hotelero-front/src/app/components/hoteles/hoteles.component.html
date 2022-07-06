@@ -27,14 +27,14 @@
                     <h5>Contacto: {{hotel.phone}}</h5>
                     <h5>Email: {{hotel.email}}</h5>
                     <div>
-                    <div *ngIf="role == 'CLIENT'" class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
-                        <button id="a" class="btn btn-success "  [routerLink]="['/dataHotels/' + hotel._id]" >Ver más</button>
+                    <div  class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
+                        <button *ngIf="role == 'CLIENT'" id="a" class="btn btn-success "  [routerLink]="['/dataHotels/' + hotel._id]" >Ver más</button>
                       </div>
-                      <div *ngIf="role == 'ADMIN-APP'" class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
-                        <button id="a" class="btn btn-success"  (click)="deleteHotel(hotel._id)" >Elimnar</button>
+                      <div  class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
+                        <button *ngIf="role == 'ADMIN-APP'" id="a" class="btn btn-success"  (click)="deleteHotel(hotel._id)" >Elimnar</button>
                       </div>
-                      <div *ngIf="role == 'ADMIN-APP' and role =='ADMIN-HOTEL'" class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
-                        <button (click)="getHotel(hotel._id)" id="a" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModalCenterHotelUpdate" >Editar</button>
+                      <div  class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
+                        <button *ngIf="role == 'ADMIN-APP' and role =='ADMIN-HOTEL'" (click)="getHotel(hotel._id)" id="a" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModalCenterHotelUpdate" >Editar</button>
                       </div>
                     </div>
                 </div>

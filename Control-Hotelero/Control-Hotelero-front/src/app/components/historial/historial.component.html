@@ -1,33 +1,39 @@
-<app-nav-bar></app-nav-bar>
+
 <body>
+	<app-nav-bar></app-nav-bar>
 <section>
 	<div class="container py-4">
-		<h1 class="h1 text-center" id="pageHeaderTitle">Reservaciones</h1>
+		<h1 class="h1 text-center" id="pageHeaderTitle">Mis Reservaciones</h1>
 
 		<article class="postcard dark blue" *ngFor="let reservation of reservations">
 			<a class="postcard__img_link" >
 				<img class="postcard__img" src="../../../assets/img/reservacion.jpg" alt="Image Title" />	
 			</a>
 			<div class="postcard__text" >
-				<h1 class="postcard__title red" style="margin-left: 39%; margin-top: -5%; font-size: 2.5rem;"><a >Reservación</a></h1>
-				<div class="postcard__subtitle small" style="margin-top: 5%">
+				<h1 style="text-align: center;">{{reservation.hotel.nameHotel}}</h1>
+				<hr>
+				<div class="postcard__preview-txt"  style="font-size: 1.20rem; text-align:center ;"><strong>Habitación: {{reservation.room.name + ' | ' + 'Q '+reservation.room.price}}</strong> </div>
+				<div class="postcard__subtitle small" style="text-align: center;">
 					<time datetime="2020-05-25">
-						<i class="fas fa-calendar-alt mr-2" ></i><td style="font-size: 1.09rem">{{reservation.startDate}}</td>   <i class="fas fa-calendar-alt mr-2"></i><td style="font-size: 1.09rem">{{reservation.finishDate}}</td>
+						<i class="fas fa-calendar-alt mr-2" ></i><td style="font-size: 1.09rem; ">{{reservation.startDate | date:'medium':'GMT' +'	-'}}</td>   <i class="fas fa-calendar-alt mr-2"></i><td style="font-size: 1.09rem">{{reservation.finishDate | date:'medium':'GMT'}}</td>
 					</time>
 				</div>
 				<div class="postcard__bar"></div>
-                <div class="postcard__preview-txt" style="font-size: 1.20rem">Usuario: {{reservation.user.name}}</div> 
-                <div class="postcard__preview-txt"  style="font-size: 1.20rem">Hotel: {{reservation.hotel.nameHotel}}</div>
-                <div class="postcard__preview-txt"  style="font-size: 1.20rem;">Habitación: {{reservation.room.name}}</div>
-                <div class="postcard__preview-txt"  style="font-size: 1.20rem">Servicios: {{reservation.services.name}}</div>
-                <div class="postcard__preview-txt"  style="font-size: 1.20rem">Días: {{reservation.days}}</div>
-                <div class="postcard__preview-txt"  style="font-size: 1.20rem">Status: {{reservation.status}}</div>
-                <div class="postcard__preview-txt"  style="font-size: 1.20rem">Total: {{reservation.total}}</div>
+                <div class="postcard__preview-txt" style="font-size: 1.20rem"><strong>Cliente: </strong> {{' '+ reservation.user.name}}</div> 
+                
+				<div><h5><strong>Servicios Adquiridos:</strong></h5></div>
+                
+				<ul *ngFor="let service of reservation.services">
+                    <li>{{service.service.name}} | Q. {{service.service.price}}</li>
+                </ul>
+				
+                <div class="postcard__preview-txt"  style="font-size: 1.20rem"><strong>Reservación: </strong> {{ reservation.days +' Días'}}</div>
+				<br>
+                <div class="postcard__preview-txt"  style="font-size: 1.20rem; text-align: center;"><strong>Total: </strong> {{'Q ' + reservation.total}}</div>
             <!--    <ul class="postcard__tagbox">
 				</ul> -->
 			</div>
 		</article>
-		
 		
 	</div>
 </section>

@@ -106,5 +106,7 @@ updateEvent(id:string, params:{}){
 deleteEvent( id:string){
   return this.http.delete(environment.baseUrl + 'event/deleteEvent/' + id, {headers:this.httOptions})
 };
+
+
   
 }
