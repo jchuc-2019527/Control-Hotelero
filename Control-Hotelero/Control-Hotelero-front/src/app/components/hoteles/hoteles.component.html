@@ -11,9 +11,16 @@
   <h1>HOTELES</h1>
   <hr>
 </div>
+
+<form action="https://duckduckgo.com/" role="search" class="search-form" style="margin-left: 35%; margin-top: 2%;">
+  <input type="search" name="q" [(ngModel)]="search" class="search-text" placeholder="Buscar por nombre..." autocomplete="off">
+  <input style="margin-left: 2%" type="search" name="q"  [(ngModel)]="searchDi" class="search-text" placeholder="Buscar por dirección..." autocomplete="off">
+</form>
+<br>
+
 <body >
     <div class="row">
-    <div class="container"  *ngFor="let hotel of hotels">
+    <div class="container"  *ngFor="let hotel of hotels | search:search | searchDirection:searchDi">
         <div class="card">
             <div class="face face1" >
                 <div class="content" >

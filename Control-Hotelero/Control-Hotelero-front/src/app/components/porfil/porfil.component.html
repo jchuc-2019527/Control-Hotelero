@@ -1,1 +1,51 @@
-<p>porfil works!</p>
+<body>
+    <app-nav-bar></app-nav-bar>
+    <div class="container">
+        <div class="cover-photo">
+          <img src="https://images.unsplash.com/photo-1565464027194-7957a2295fb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" class="profile">
+        </div>
+        <div class="profile-name"> Nombre: {{userUpdate.name}}</div>
+        <hr>
+        <p class="about">{{userUpdate.username}}</p>
+        <p class="about">{{userUpdate.role}}</p>
+        <button *ngIf="role =='CLIENT'" class="msg-btn" (click)="deleteUser()" (click)="logOut()" routerLink="/home">Eliminar</button>
+        <button *ngIf="role =='CLIENT'"  class="follow-btn" (click)="getUser()"  data-bs-toggle="modal" data-bs-target="#exampleModalCenterPerfilUpdate">Actualizar</button>
+        <div>
+        </div>
+      </div>
+</body>
+
+<!-- Modal Actualizar User -->
+<div class="modal fade" id="exampleModalCenterPerfilUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterPerfilUpdate" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content rounded -0">
+        <div class="modal-body py-0">
+          <button  style="float:right" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="d-flex main-content">
+            <div class="bg-image promo-img mr-3" style="background-image: url('../../../assets/img/habiAct.png');">
+            </div>
+            <div class="content-text p-4">
+              <h3>Actualizar Hotel</h3>
+              <form *ngIf="userUpdate" #updateForm="ngForm" >
+                <div class="form-group">
+                  <label for="nameHotel">Nombre</label>
+                  <input [(ngModel)]="userUpdate.name" name="name" type="text" class="form-control" id="nameHotel" placeholder="Nombre de hotel">
+                </div>
+                <div class="form-group">
+                  <label for="direction">Username</label>
+                  <input [(ngModel)]="userUpdate.username" name="username" type="text" class="form-control" id="direction" placeholder="Direccion">
+                </div>
+                
+                <div class="form-group">
+                  <div  class="multi-buttonA" >
+                    <button  (click)="updateUser(updateForm)" class="btn btn-success m-3 "
+                    data-bs-toggle="modal" >Actualizar</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

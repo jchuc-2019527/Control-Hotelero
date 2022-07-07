@@ -1,0 +1,22 @@
+
+#global{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+
+#contenedorFechas{
+    
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px black;
+
+    height: 20rem;
+    width: 30rem;
+}

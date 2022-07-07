@@ -17,6 +17,7 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     this.role = this.adminAppRest.getIdentity().role;
     this.token = this.adminAppRest.getToken();
+    this.id = this.adminAppRest.getIdentity()._id
   }
 
   logOut(){

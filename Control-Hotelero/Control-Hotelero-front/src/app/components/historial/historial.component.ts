@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservationResService } from 'src/app/services/reservationRes/reservation-res.service';
 import { reservationModel } from 'src/app/models/reservation.model';
+import { AdminAppRestService } from 'src/app/services/adminAppRest/admin-app-rest.service';
 
 
 @Component({
@@ -9,13 +10,17 @@ import { reservationModel } from 'src/app/models/reservation.model';
   styleUrls: ['./historial.component.css']
 })
 export class HistorialComponent implements OnInit {
+  idClient:any
 services: any
 reservations: any;
 reservation: reservationModel;
 
+search:any
+
 
   constructor(
     public reservationRest: ReservationResService,
+    private adminRest : AdminAppRestService 
   ) {
     this.reservation = new reservationModel('',new Date(),new Date(),'','','',[],0,false,0);
 
@@ -23,6 +28,7 @@ reservation: reservationModel;
 
   ngOnInit(): void {
     this.getReservations();
+    this.idClient = this.adminRest.getIdentity()._id;
   };
   
   getReservations(){

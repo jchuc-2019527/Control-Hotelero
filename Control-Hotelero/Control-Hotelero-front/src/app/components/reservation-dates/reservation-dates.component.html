@@ -1,0 +1,29 @@
+<body>
+    <app-nav-bar></app-nav-bar>
+    <br>
+  <h1 style="text-align:center ;">Seleccionar la Fecha</h1>
+  <hr style="margin: 3rem;">
+  <br>
+<div id="global">
+  
+  <div id="contenedorFechas">
+    <div>
+      <h1>fechas</h1>
+    </div>
+    <div class="form-group">
+        <label for="start">Fecha Inicio</label> <br>
+        <input [(ngModel)]="this.dates.startDate" name="start" type="date">
+    </div>
+    
+    <div class="form-group">
+      <label for="finish">Fecha Final</label> <br>
+      <input [(ngModel)]="this.dates.finishDate" name="finish" type="date">
+  </div>
+  <div>
+    <a (click)="pushDate()"  style="align-items: center;"  class="btn btn-primary btn-sm">Read More</a>
+  </div>
+
+</div>
+ 
+  </div>
+</body>

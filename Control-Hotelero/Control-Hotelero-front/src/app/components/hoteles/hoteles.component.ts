@@ -12,6 +12,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./hoteles.component.css']
 })
 export class HotelesComponent implements OnInit {
+
+  search:any;
+  searchDi: any;
+  
   hotelUpdate: any;
   hotels: any =[] ;
   hotel: hotelModel;

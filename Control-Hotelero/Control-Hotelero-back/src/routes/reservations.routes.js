@@ -10,9 +10,10 @@ api.post('/addReservation/:idClient/:idHotel', reservationController.addReservat
 api.put('/updateRoom/:idReservation', [mdAuth.ensureAuth], reservationController.updateRoom);
 api.put('/pushDate/:idReservation/:idRoom', [mdAuth.ensureAuth], reservationController.pushDate);
 api.put('/pushServices/:idReservation', [mdAuth.ensureAuth], reservationController.pushServices);
+
 api.put('/confirmateReservation/:idReservation', [mdAuth.ensureAuth], reservationController.confirmateReservation);
 api.get('/getReservations', [mdAuth.ensureAuth], reservationController.getReservations);
 api.put('/cancelReservation/:idReservation', [mdAuth.ensureAuth],reservationController.cancelReservation);
 
-api.get('/getReservationsByHotel/:idHotel', [mdAuth.ensureAuth], reservationController.getReservationsByHotel)
+api.get('/getReservationsByHotel/:idHotel', [mdAuth.ensureAuth1], reservationController.getReservationsByHotel)
 module.exports = api;

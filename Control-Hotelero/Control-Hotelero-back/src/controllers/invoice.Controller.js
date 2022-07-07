@@ -20,8 +20,25 @@ exports.generateInvoice = async (req, res) => {
         let invoice = new Invoice(data);
         await invoice.save();
         const reservationUpdated = await Reservation.findOneAndUpdate({_id: idReservation}, {status: true}, {new: true});
-        return res.status(200).send({invoice});
+        return res.status(200).send({message:'Invoice generated', invoice});
     } catch (err) {
+        console.log(err);
+        return err;
+    }
+};
+
+
+//Mostrarme las facturas de un Cliente
+exports.getInvoices  = async(req, res)=>{
+    try {
+        const params = req.body;
+        
+        const username= req.params.username
+        
+        const invoices = await Invoice.find({user: username});
+        return res.status(200).send({invoices})
+        
+    } catch (error) {
         console.log(err);
         return err;
     }

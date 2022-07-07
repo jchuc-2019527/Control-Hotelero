@@ -7,6 +7,6 @@ const mdAuth = require('../services/authenticated');
 
 const api = express.Router();
 
-api.post('/generateInvoice/:idReservation', [mdAuth.ensureAuth1, mdAuth.isAdminHotel], invoiceController.generateInvoice)
-
+api.post('/generateInvoice/:idReservation', invoiceController.generateInvoice)
+api.get('/getInvoices/:username',[mdAuth.ensureAuth],invoiceController.getInvoices )
 module.exports = api;

@@ -57,7 +57,7 @@ eventUpdate: any = [];
 
   ngOnInit(): void {
     this.activateRoute.paramMap.subscribe((idH:any)=>{
-      this.idHotel =idH.get('id');
+      this.idHotel =idH.get('idHotel');
     });
     this.role = this.adminRest.getIdentity().role;
     this.idClient = this.adminRest.getIdentity()._id;
@@ -341,7 +341,7 @@ eventUpdate: any = [];
         console.log(res.message)
         console.log(res.reservation)
          this.idReservation = res.reservation._id;
-         this.router.navigateByUrl('/reservationRoom/' + this.idReservation);
+         this.router.navigateByUrl('/reservationRoom/' + this.idHotel + '/' + this.idReservation);
       },
       error:(err)=>
         console.log(err.error.message || err.error)

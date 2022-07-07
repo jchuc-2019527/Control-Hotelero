@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const reservationSchema = mongoose.Schema({
     startDate: Date,
     finishDate: Date,
-    user: {type: mongoose.Schema.ObjectId, ref:'User'},
+    user: {type: mongoose.Schema.ObjectId, ref: 'User'},
     hotel: {type: mongoose.Schema.ObjectId, ref:'Hotel'},
     room: {type: mongoose.Schema.ObjectId, ref:'Rooms'},
     services: [{
@@ -21,4 +21,4 @@ const reservationSchema = mongoose.Schema({
     total: Number
 });
 
-module.exports = mongoose.model('Reservation', reservationSchema);
+module.exports = mongoose.model('Reservation', reservationSchema); 

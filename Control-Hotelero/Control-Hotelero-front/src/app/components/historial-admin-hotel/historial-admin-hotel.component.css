@@ -279,6 +279,38 @@ a, a:hover {
   }
 }
 
+/* BOTON A*/
+
+.multi-buttonA button{
+  height: 32px;
+  width: 180px;
+  background: linear-gradient(to bottom, #4fc1e4, #1624e9 );
+  font-weight: bold;
+  color: white;
+  font-size: 1.00rem;
+  border: none;
+  margin: -5px;
+  padding: 0;
+  stroke: black;
+  outline: none;
+}
+.multi-buttonA :nth-child(1){
+  border-radius: 20px 20px 20px 20px;
+}
+.multi-buttonA :nth-child(3){
+  border-radius: 0 20px 20px 0;
+}
+button:hover{
+  cursor: pointer;
+  filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.45));
+}
+button:active{
+  filter: none;
+  transform: scale(.95);
+}
+
+
+
  /* Buscador */
 
 

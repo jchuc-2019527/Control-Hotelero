@@ -2,16 +2,18 @@
 	<app-nav-bar></app-nav-bar>
 <section>
 	<div class="container py-4">
-		<h1 class="h1 text-center" id="pageHeaderTitle">Mis Reservaciones</h1>
+		<h1 class="h1 text-center" id="pageHeaderTitle">Reservaciones Hechas en Mi Hotel</h1>
+		
 
 		<form action="https://duckduckgo.com/" role="search" class="search-form" style="margin-left: 35%">
-			<input type="search" name="q"  [(ngModel)]="search" class="search-text" placeholder="Buscar por Hotel..." autocomplete="off">
+			<input type="search" name="q"  [(ngModel)]="search" class="search-text" placeholder="Buscar por usuario..." autocomplete="off">
 	</form>
 	<br>
 	<br>
-		<article class="postcard dark blue" *ngFor="let reservation of reservations | searchUh:search">
+		  
+		<article class="postcard dark blue" *ngFor="let reservation of reservations | searchUser:search">
 			<a class="postcard__img_link" >
-				<img class="postcard__img" src="../../../assets/img/reservacion.jpg" alt="Image Title" />	
+				<img class="postcard__img" src="../../../assets/img/reserAd.jpg" alt="Image Title" />	
 			</a>
 			<div class="postcard__text" >
 				<h1 style="text-align: center;">{{reservation.hotel.nameHotel}}</h1>
@@ -34,11 +36,14 @@
                 <div class="postcard__preview-txt"  style="font-size: 1.20rem"><strong>Reservación: </strong> {{ reservation.days +' Días'}}</div>
 				<br>
                 <div class="postcard__preview-txt"  style="font-size: 1.20rem; text-align: center;"><strong>Total: </strong> {{'Q ' + reservation.total}}</div>
-            <!--    <ul class="postcard__tagbox">
-				</ul> -->
+               <ul class="postcard__tagbox">
+                <div  class="multi-buttonA"  style = "margin-top: -4%; margin-left: 36%;">
+                    <button id="b" class="btn btn-success m-3 " (click)="generateInvoice(reservation._id)">Generar Factura</button>
+                  </div>
+				</ul> 
 			</div>
 		</article>
-		
+
 	</div>
 </section>
 </body>

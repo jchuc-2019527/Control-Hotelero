@@ -87,10 +87,10 @@ exports.updateHotel = async(req, res)=>{
         const hotelExist = await Hotel.findOne({_id: idHotel});
         if(hotelExist){
             const hotelName = await Hotel.findOne({name: params.nameHotel})
-            if(hotelName && hotelExist.nameHotel != params.nameHotel){
+            if(hotelName && hotelExist.nameHotel == params.nameHotel){
                 return res.status(400).send({message:'Name already in use'})
             }else{
-                const updateHotel = await Hotel.findOneAndUpdate({_id: idHotel}, params, {new:true});
+                const updateHotel = await Hotel.findOneAndUpdate({_id: idHotel}, params, {new:true})
                 return res.status(200).send({message:'Hotel updated', updateHotel})
             }
         }else{

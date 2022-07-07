@@ -1,0 +1,34 @@
+<body>
+    <app-nav-bar></app-nav-bar>
+    <br>
+    <h1 style="text-align:center ;">Seleccionar Servicios</h1>
+    <hr style="margin: 3rem;">
+    <br>
+  <div *ngFor="let service of arrayService" id="w">
+    
+          <div  class="card">
+            <div class="row">
+              <div class="col-sm-7">
+                <div class="card-block">
+                  <!--           <h4 class="card-title">Small card</h4> -->
+                  <h1 style="text-align: center;">{{service.name}}</h1>
+                  <hr>
+                  <h3>{{'Q ' +service.price}}</h3>
+                  <a (click)="pushServices(service._id)" style="align-items: center;" routerLink="/hoteles" class="btn btn-primary btn-sm">Read More</a>
+                </div>
+              </div>
+      
+              <div class="col-sm-5">
+                <img 
+                  src="../../../assets/img/habiAct.png"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+  
+  </div>
+  
+  
+    
+  </body>

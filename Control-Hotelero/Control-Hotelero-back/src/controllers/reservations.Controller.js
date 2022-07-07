@@ -226,7 +226,7 @@ exports.getReservations = async (req, res) => {
         const idClient = req.user.sub;
         const reservations = await Reservation.find({user: idClient}).populate('user').populate('hotel').populate('room');
         return res.status(200).send({reservations});
-    } catch (err) {
+    } catch (err) {  
         console.log(err);
         return err;
     }
@@ -237,10 +237,10 @@ exports.getReservations = async (req, res) => {
 exports.getReservationsByHotel = async (req, res) => {
     try {
         const idHotel = req.params.idHotel;
-        const reservations = await Reservation.find({hotel: idHotel}).populate('user').populate('hotel').populate('room');
+        const reservations = await Reservation.find({hotel: idHotel, status: 'false'}).populate('user').populate('hotel').populate('room');
         return res.status(200).send({reservations});
     } catch (err) {
-        console.log(err);
-        return err;
+        console.log(err); 
+        return err;   
     }
 }

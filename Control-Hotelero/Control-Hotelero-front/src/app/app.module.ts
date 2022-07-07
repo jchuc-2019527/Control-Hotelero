@@ -13,6 +13,14 @@ import { BienvenidaComponent } from './components/bienvenida/bienvenida.componen
 import { HistorialComponent } from './components/historial/historial.component';
 import { ReservationRoomComponent } from './components/reservation-room/reservation-room.component';
 import { PorfilComponent } from './components/porfil/porfil.component';
+import { ReservationDatesComponent } from './components/reservation-dates/reservation-dates.component';
+import { ReservationServiceComponent } from './components/reservation-service/reservation-service.component';
+import { HistorialAdminHotelComponent } from './components/historial-admin-hotel/historial-admin-hotel.component';
+import { SearchPipe } from './pipes/search.pipe';
+import { SearchUserPipe } from './pipes/search-user.pipe';
+import { SearchDirectionPipe } from './pipes/search-direction.pipe';
+import { SearchUhPipe } from './pipes/search-uh.pipe';
+import { FacturaComponent } from './components/factura/factura.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +32,15 @@ import { PorfilComponent } from './components/porfil/porfil.component';
     BienvenidaComponent,
     HistorialComponent,
     ReservationRoomComponent,
-    PorfilComponent
+    PorfilComponent,
+    ReservationDatesComponent,
+    ReservationServiceComponent,
+    HistorialAdminHotelComponent,
+    SearchPipe,
+    SearchUserPipe,
+    SearchDirectionPipe,
+    SearchUhPipe,
+    FacturaComponent
   ],
   imports: [
     BrowserModule,

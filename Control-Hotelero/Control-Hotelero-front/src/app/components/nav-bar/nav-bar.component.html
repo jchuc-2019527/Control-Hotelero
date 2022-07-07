@@ -44,11 +44,19 @@
           <span class="sr-only"></span>
           </a>
       </li>
+      <li *ngIf="role =='CLIENT'" class="nav-item active">
+        <a  routerLink="/factura" class="nav-link">
+          <i><img src="../../../assets/img/factura.png" alt="" width="35rem" height="30rem" style="margin-left: 8px"></i>
+          <br>
+          <h6>Facturas</h6>
+          <span class="sr-only"></span>
+          </a>
+      </li>
      
     </ul>
     <ul class="navbar-nav ">
         <li *ngIf="role" class="nav-item active">
-            <a class="nav-link"  >
+            <a class="nav-link" [routerLink]="['/porfil/' + id]">
               <i><img src="../../../assets/img/perfil.png" alt="" width="35rem" height="30rem"></i>
               <br>
               <h6>Perfil</h6>
