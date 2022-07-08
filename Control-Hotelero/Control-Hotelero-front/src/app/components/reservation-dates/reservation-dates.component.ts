@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReservationResService } from 'src/app/services/reservationRes/reservation-res.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reservation-dates',
@@ -18,7 +19,8 @@ export class ReservationDatesComponent implements OnInit {
 
   constructor(
     public activateRoute: ActivatedRoute,
-    private reservationRest: ReservationResService
+    private reservationRest: ReservationResService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -36,10 +38,23 @@ export class ReservationDatesComponent implements OnInit {
   pushDate(){
     this.reservationRest.pushDate(this.idReservation, this.idRoom, this.dates).subscribe({
       next:(res:any)=>{
-        console.log(res.message)
+        Swal.fire({
+          title: res.message,
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2000,
+          position:'center'
+        })
+        this.router.navigateByUrl('/reservationServices/' + this.idReservation +'/'+ this.idHotel)
       },
-      error: (err) => console.log(err.error.message || err.error)
+      error:(err)=>Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
     })
+
   }
 
 }

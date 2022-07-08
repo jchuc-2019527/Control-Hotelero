@@ -44,15 +44,26 @@ export class ReservationResService {
   }
 
   //Reservation Services
-  pushService(idReservation:string, idService:any){
-    let body = JSON.stringify({idService})
+  pushService(idReservation:string, service:any){
+
+    let body = JSON.stringify({service})
     return this.http.put(environment.baseUrl + 'reservation/pushServices/' + idReservation, body, {headers:this.httOptions});
 
   };
 
   getServices(idHotel:string){
     return this.http.get(environment.baseUrl + 'service/getServices/' + idHotel, {headers:this.httOptions});
+  };
+
+  confirmateReservation(idReservation:string){
+    return this.http.put(environment.baseUrl + 'reservation/confirmateReservation/' + idReservation, {headers:this.httOptions});
+  };
+  
+  cancelReservation(idReservation:string){
+    return this.http.put(environment.baseUrl + 'reservation/cancelReservation/' + idReservation, {headers:this.httOptions});
   }
+
+
 
   //Historial de las reservaciones del Admin
 

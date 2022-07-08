@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservationResService } from 'src/app/services/reservationRes/reservation-res.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reservation-room',
@@ -41,9 +42,20 @@ export class ReservationRoomComponent implements OnInit {
   updateRoom(idRoom:string){
     this.reservationRest.updateRoom(this.idReservation, idRoom).subscribe({
       next:(res:any)=>{
-        console.log(res.reservationUpdated)
+        Swal.fire({
+          title: res.message,
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2000,
+          position:'center'
+        })
       },
-      error: (err) => console.log(err.error.message || err.error)
+      error:(err)=>Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
     })
     
   }

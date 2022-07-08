@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ReservationResService } from 'src/app/services/reservationRes/reservation-res.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reservation-service',
@@ -37,13 +38,65 @@ export class ReservationServiceComponent implements OnInit {
     })
   }
 
-  pushServices(idService:string){
-    this.reservationRest.pushService(this.idReservation, idService).subscribe({
+  pushServices(service:string){
+    this.reservationRest.pushService(this.idReservation, service).subscribe({
       next:(res:any)=>{
-        console.log(res.message)
+        Swal.fire({
+          title: res.message,
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2000,
+          position:'center'
+        })
       },
-      error: (err) => console.log(err.error.message || err.error)
+      error:(err)=>Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
     })
-  }
+  };
+
+  confirmateReservation(){
+    this.reservationRest.confirmateReservation(this.idReservation).subscribe({
+      next:(res:any)=>{
+        Swal.fire({
+          title: res.message,
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2000,
+          position:'center'
+        })
+      },
+      error:(err)=>Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
+    })
+  };
+
+  cancelReservation(){
+    this.reservationRest.cancelReservation(this.idReservation).subscribe({
+      next:(res:any)=>{
+        Swal.fire({
+          title: res.message,
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2000,
+          position:'center'
+        })
+      },
+      error:(err)=>Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
+    })
+  };
+
 
 }

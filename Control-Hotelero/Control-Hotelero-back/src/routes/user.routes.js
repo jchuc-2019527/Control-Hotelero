@@ -9,7 +9,7 @@ const api = express.Router();
 
 api.post('/registerUser', userController.registerUser);
 api.post('/login', userController.login);
-api.get('/getUser/:idClient', mdAuth.ensureAuth, userController.getUser)
+api.get('/getUser/:idClient', userController.getUser)
 api.put('/updateUser/:idClient', mdAuth.ensureAuth, userController.updateUser);
 api.delete('/deleteUser/:idClient', mdAuth.ensureAuth, userController.deleteUser);
 

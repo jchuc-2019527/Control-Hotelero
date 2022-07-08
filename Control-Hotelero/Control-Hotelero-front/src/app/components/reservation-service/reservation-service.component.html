@@ -4,6 +4,12 @@
     <h1 style="text-align:center ;">Seleccionar Servicios</h1>
     <hr style="margin: 3rem;">
     <br>
+    <div class="mb-3" >
+      <a (click)="confirmateReservation()" routerLink="/bienvenida"  class="btn btn-warning">Confirmar</a>
+      <a (click)="cancelReservation()"  routerLink="/bienvenida"  class="btn btn-danger">Cancelar</a>
+    </div>
+    
+
   <div *ngFor="let service of arrayService" id="w">
     
           <div  class="card">
@@ -13,8 +19,9 @@
                   <!--           <h4 class="card-title">Small card</h4> -->
                   <h1 style="text-align: center;">{{service.name}}</h1>
                   <hr>
-                  <h3>{{'Q ' +service.price}}</h3>
-                  <a (click)="pushServices(service._id)" style="align-items: center;" routerLink="/hoteles" class="btn btn-primary btn-sm">Read More</a>
+                  <h3 style="text-align: center;">{{'Q ' +service.price}}</h3>
+                  <br>
+                  <a  (click)="pushServices(service._id)"  class="btn btn-primary btn-sm">Agregar Servicio</a>
                 </div>
               </div>
       
@@ -26,9 +33,6 @@
               </div>
             </div>
           </div>
+    </div>
   
-  </div>
-  
-  
-    
   </body>

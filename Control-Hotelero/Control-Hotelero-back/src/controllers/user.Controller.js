@@ -4,6 +4,8 @@ const {validateData, encrypt, searchUser, checkPassword, searchAdminApp, searchA
 const {createToken, createToken1} = require('../services/jwt');
 const Reservation = require('../models/reservations.model');
 const Room = require('../models/rooms.model');
+const AdminApp = require('../models/adminApp.model');
+const AdminHotel = require ('../models/adminHotel.model')
 
 
 // Register Client
@@ -90,8 +92,19 @@ exports.login = async (req, res) => {
 exports.getUser = async (req, res)=>{
     try {
         const idClient = req.params.idClient;
-        const user = await User.findOne({_id: idClient});
-        return res.status(200).send({user})
+        var user = await User.findOne({_id: idClient});
+        if(user){
+            return res.status(200).send({user})
+        };
+        var user = await AdminApp.findOne({_id: idClient});
+        if(user){
+            return res.status(200).send({user})
+        };
+        var user = await AdminHotel.findOne({_id: idClient});
+        if(user){
+            return res.status(200).send({user})
+        };
+
         
     } catch (error) {
         console.log(err);

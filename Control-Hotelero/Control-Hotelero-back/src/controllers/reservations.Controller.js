@@ -5,7 +5,7 @@ const Room = require ('../models/rooms.model');
 const Service = require ('../models/serviceHotel.model');
 
 
-//FUNCIÓN PARA CREAR UNA RESERVACIÓN CON SUS CAMPOS VACIOS
+//Creación de Reservación (Hotel y Usuario)
 exports.addReservation = async (req, res) => {
     try {
         const idUser = req.params.idClient;
@@ -28,8 +28,8 @@ exports.addReservation = async (req, res) => {
     }
 }
 
-//FUNCIÓN PARA ACTUALIZAR LA HABITACIÓN DE UNA RESERVACION
-exports.updateRoom = async (req, res) => { 
+//Agregarle una habitación a las reservación
+exports.pushRoom = async (req, res) => { 
     try {
         const idReservation = req.params.idReservation;
         const params = req.body;
@@ -41,7 +41,7 @@ exports.updateRoom = async (req, res) => {
             return res.status(400).send(msg);
         }else{
             const reservationUpdated = await Reservation.findOneAndUpdate({_id: idReservation}, data, {new: true});
-            return res.status(200).send({ message: "Reservation updated.", reservationUpdated});
+            return res.status(200).send({ message: "Added Room", reservationUpdated});
         }
     } catch (err) {
         console.log(err);
@@ -49,7 +49,7 @@ exports.updateRoom = async (req, res) => {
     }
 };
 
-//FUNCIÓN PARA ASIGNAR LA FECHA QUE DESEO RESERVAR
+//Asignar la Fecha de reservación de la habitación
 exports.pushDate = async (req, res) => {
     try {
         const idReservation = req.params.idReservation;
@@ -81,7 +81,7 @@ exports.pushDate = async (req, res) => {
                     }
                 }, {new: true});
                 const reservationUpdated = await Reservation.findOneAndUpdate({_id: idReservation}, {startDate: startDate, finishDate: finishDate}, {new: true});
-                return res.status(200).send({message: "Reservation created successfully."});
+                return res.status(200).send({message: "Added Dates"});
             }
             //Aqui se realiza la reservacion con búsqueda ya que ya hay fechas y se necesita comparar.  
             else{
@@ -99,7 +99,7 @@ exports.pushDate = async (req, res) => {
                 });
                 console.log(arrayResults);
                 if(arrayResults.includes(true)){
-                    return res.status(400).send({message: "This room cannot be reserve on this date."});
+                    return res.status(400).send({message: "Dates not available"});
                 }else{
                     const roomUpdated = await Room.findOneAndUpdate({_id: idRoom}, {
                         $push: {
@@ -112,7 +112,7 @@ exports.pushDate = async (req, res) => {
                         }
                     }, {new: true});
                     const reservationUpdated = await Reservation.findOneAndUpdate({_id: idReservation}, {startDate: startDate, finishDate: finishDate}, {new: true});
-                    return res.status(200).send({message: "Room added succesffuly on date selected."});
+                    return res.status(200).send({message: "Added Dates"});
                 }
             }
         }
@@ -122,7 +122,7 @@ exports.pushDate = async (req, res) => {
     }
 };
 
-//FUNCIÓN PARA PUSHEAR SERVICIOS AL ARREGLO DE LA FUNCION
+//Pusheamos los servicios a la reservación
 exports.pushServices = async (req, res) => {
     try {
         const idReservation = req.params.idReservation;
@@ -146,7 +146,7 @@ exports.pushServices = async (req, res) => {
                     }]
                 }
             }, {new: true});
-            return res.status(200).send({message: "Service added successfully.", reservationUpdated});
+            return res.status(200).send({message: "Service added", reservationUpdated});
         }
     } catch (err) {
         console.log(err);
@@ -154,7 +154,7 @@ exports.pushServices = async (req, res) => {
     }
 };
 
-//FUNCIÓN PARA CONFIRMAR RESERVACIÓN
+//Finalizar el proceso de la reservación (Se actualiza el total de dias y el Total a pagar)
 exports.confirmateReservation = async (req, res) => {
     try {
         const idReservation = req.params.idReservation;
@@ -184,7 +184,7 @@ exports.confirmateReservation = async (req, res) => {
         });
         
         const reservationUpdated = await Reservation.findOneAndUpdate({_id: idReservation}, {total: totalHospedaje+totalServices, days: days}, {new: true});
-        return res.status(200).send({message: "Reservation made.", reservationUpdated});
+        return res.status(200).send({message: "Reservation added.", reservationUpdated});
     } catch (err) {
         console.log(err);
         return err;
