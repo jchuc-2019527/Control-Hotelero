@@ -17,6 +17,8 @@ export class ReservationDatesComponent implements OnInit {
     finishDate: ''
   }
 
+  roomDates:any
+
   constructor(
     public activateRoute: ActivatedRoute,
     private reservationRest: ReservationResService,
@@ -33,6 +35,8 @@ export class ReservationDatesComponent implements OnInit {
     this.activateRoute.paramMap.subscribe((idH:any)=>{
       this.idHotel =idH.get('idHotel');
     });
+
+    this.getRoom();
   };
 
   pushDate(){
@@ -55,6 +59,16 @@ export class ReservationDatesComponent implements OnInit {
       })
     })
 
+  };
+
+  getRoom(){
+    this.reservationRest.getRoom(this.idRoom).subscribe({
+      next:(res:any)=>{
+        this.roomDates = res.room
+        console.log(this.roomDates)
+      },
+      error: (err) => console.log(err.error.message || err.error)
+    })
   }
 
 }

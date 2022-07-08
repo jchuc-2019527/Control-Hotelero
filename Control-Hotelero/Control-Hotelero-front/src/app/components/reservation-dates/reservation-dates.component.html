@@ -4,12 +4,14 @@
   <h1 style="text-align:center ;">Seleccionar la Fecha</h1>
   <hr style="margin: 3rem;">
   <br>
+  <div id="divDate" >
+    <h4 style="text-align: center;">FECHAS OCUPADAS</h4>
+    <ul style="text-align: center;" *ngFor="let room of roomDates.dates">{{room.date.startDate}} | {{room.date.finishDate}}</ul>
+  </div>
 <div id="global">
   
   <div id="contenedorFechas">
-    <div>
-      <h1>fechas</h1>
-    </div>
+    
     <div class="form-group">
         <label for="start">Fecha Inicio</label> <br>
         <input [(ngModel)]="this.dates.startDate" name="start" type="date">

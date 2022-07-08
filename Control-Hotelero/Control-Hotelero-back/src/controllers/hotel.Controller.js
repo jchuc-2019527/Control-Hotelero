@@ -4,6 +4,8 @@ const Hotel = require('../models/hotel.model');
 const Service = require ('../models/serviceHotel.model');
 const Room = require ('../models/rooms.model');
 const Event = require ('../models/events.model')
+const Reservation = require('../models/reservations.model');
+
 
 const {validateData, encrypt} = require('../utils/validate');
 
@@ -64,12 +66,13 @@ exports.deleteHotel = async (req,res)=>{
         const idHotel = req.params.idHotel
         const hotelExist = await Hotel.findOne({_id: idHotel});
         if(hotelExist){
-            const deleteHotel = await Hotel.findOneAndDelete({_id: idHotel});
+            const deleteAdminHotel = await AdminHotel.findOneAndDelete({_id: hotelExist.adminHotel});
+            const deleteReservation = await Reservation.deleteMany({hotel: idHotel});
             const deleteRoom = await Room.deleteMany({hotel: idHotel});
             const deleteService = await Service.deleteMany({hotel: idHotel});
             const deleteEvent = await Event.deleteMany({hotel: idHotel});
+            const deleteHotel = await Hotel.findOneAndDelete({_id: idHotel});
             return res.status(200).send({message:'Hotel Deleted', deleteHotel})
-
         }else{
             return res.status(400).send({message:'Hotel not found'})
         }
@@ -79,6 +82,7 @@ exports.deleteHotel = async (req,res)=>{
         return error;
     }
 };
+
 
 exports.updateHotel = async(req, res)=>{
     try {

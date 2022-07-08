@@ -37,6 +37,10 @@ export class ReservationResService {
       return this.http.get(environment.baseUrl + 'room/getRooms/' + idHotel, {headers:this.httOptions})
   };
 
+  getRoom(idRoom: string){
+    return this.http.get(environment.baseUrl + 'room/getRoom/' + idRoom, {headers:this.httOptions})
+  }
+
   //Reservation-Dates
 
   pushDate(idReservation:string, idRoom:string, params:any){

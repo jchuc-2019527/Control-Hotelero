@@ -1,6 +1,9 @@
 'use strict'
 const AdminHotel = require('../models/adminHotel.model')
 const {validateData, encrypt, searchAdminHotel} = require('../utils/validate');
+const Hotel = require('../models/hotel.model');
+const Reservation = require('../models/reservations.model')
+const User = require ('../models/user.model')
 
 
 
@@ -26,5 +29,28 @@ exports.updateAdminHotel = async (req, res)=>{
     }catch(err){
         console.log(err);
         return err;
-    }
+    };
+
+  
 }
+
+exports.getClientes = async (req, res) => {
+    try {
+        const idAdminHotel = req.params.idAdminHotel;
+        let arrayClients = [];
+        const hotel = await Hotel.findOne({adminHotel: idAdminHotel});
+        //Se almacenan las reservaciones del hotel capturado arriba
+        const reservations = await Reservation.find({hotel: hotel._id});
+        for(let i = 0; i < reservations.length; i++){
+            const user = await User.findOne({_id: reservations[i].user});
+            if(!arrayClients.includes(user.username)){
+                const user = await User.findOne({_id: reservations[i].user});
+                arrayClients.push(user.username);
+            }
+        }
+        return res.status(200).send({arrayClients});
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
+};
