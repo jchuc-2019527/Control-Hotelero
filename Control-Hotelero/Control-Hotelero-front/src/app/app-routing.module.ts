@@ -11,6 +11,7 @@ import { ReservationDatesComponent } from './components/reservation-dates/reserv
 import { ReservationResService } from './services/reservationRes/reservation-res.service';
 import { HistorialAdminHotelComponent } from './components/historial-admin-hotel/historial-admin-hotel.component';
 import { FacturaComponent } from './components/factura/factura.component';
+import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'reservationDates/:idReservation/:idRoom/:idHotel', component:ReservationDatesComponent},
   {path: 'reservationServices/:idReservation/:idHotel', component:ReservationResService},
   {path:'factura', component:FacturaComponent},
-  {path: 'porfil/:id', component:PorfilComponent}
+  {path: 'porfil/:id', component:PorfilComponent},
+  {path: 'users', component: UsersComponent}
 ];
 
 @NgModule({

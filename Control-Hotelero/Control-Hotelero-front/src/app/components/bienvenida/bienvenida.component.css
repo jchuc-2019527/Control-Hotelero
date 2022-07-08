@@ -1,19 +1,13 @@
 html, body{
-    height:80vh;
-    display: flex;
     flex-direction: column;
-    
+    background-color: #1b96ac;
+    height: 100vh;
+    background-attachment: fixed;
+  background-size: cover;
   }
 
 #turquesa{
-    background-color: #17A589;
-    
-    text-align: center;
-    
-    
-    width: 100%;
-    height: 100%;
-    
+    text-align: center; 
 }
 #img1{
     display: flex;
@@ -42,3 +36,51 @@ h2{
     margin-bottom: 2rem;
     padding: 3rem;
 }
+
+/* boton infoHotels */
+
+span{
+    position: relative;
+    display: inline-flex;
+    width: 180px;
+    height: 55px;
+    margin: 0 15px;
+    perspective: 1000px;
+  }
+  span a{
+    font-size: 19px;
+    letter-spacing: 1px;
+    transform-style: preserve-3d;
+    transform: translateZ(-25px);
+    transition: transform .25s;
+    font-family: 'Montserrat', sans-serif;
+  
+  }
+  span a:before,
+  span a:after{
+    position: absolute;
+    content: "Observar Mi Hotel";
+    height: 55px;
+    width: 255px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid black;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background:rgb(255, 255, 255);
+  }
+  span a:before{
+    color: #fff;
+    background: #000;
+    transform: rotateY(0deg) translateZ(25px);
+  }
+  span a:after{
+    color: #000;
+    transform: rotateX(90deg) translateZ(25px);
+  }
+  span a:hover{
+    transform: translateZ(-25px) rotateX(-90deg);
+  }
+
+  

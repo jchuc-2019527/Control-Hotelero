@@ -1,22 +1,25 @@
 <body>
     <app-nav-bar></app-nav-bar>
-    
-<div *ngFor="let invoice of arrayInvoce" style="margin-left: 25%;" class="col-md-12">   
-    <div class="row">
+ <br>
+    <form action="https://duckduckgo.com/" role="search" class="search-form" style="float: left; margin-left: 2%;">
+        <input type="search" name="q"  [(ngModel)]="search" class="search-text" placeholder="Buscar por Hotel..." autocomplete="off">
+</form>
+<br>
+<div *ngFor="let invoice of arrayInvoce | searchF:search"  class="col-md-12">   
+    <div style="margin-left: 30%;" class="row">
            
            <div class="receipt-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
                <div style="margin-left: 40%" class="row">
                    <div class="receipt-header">
-                       <div class="col-xs-6 col-sm-6 col-md-6">
+                       <div class="col-xs-6 col-sm-6 col-md-6" style="margin-left: -4%">
                            <div class="receipt-left">
-                               <img class="img-responsive" alt="iamgurdeeposahan" src="https://bootdey.com/img/Content/avatar/avatar6.png" style="width: 71px; border-radius: 43px;">
+                               <img class="img-responsive" alt="iamgurdeeposahan" src="../../../assets/img/userx.png" style="width: 140px; border-radius: 43px;">
                            </div>
                        </div>
-                       <div class="col-xs-6 col-sm-6 col-md-6 text-right">
-                           <div class="receipt-right">
-                               <h5>Company Name.</h5>
-                               <p>+1 3649-6589 <i class="fa fa-phone"></i></p>
-                               <p>company@gmail.com <i class="fa fa-envelope-o"></i></p>
+                       <br>
+                       <div class="col-xs-6 col-sm-6 col-md-6 text-right " style="margin-left: -25%">
+                           <div class="receipt-right" >
+                               <h5 style="font-size: 2.20rem; font-family:Georgia, 'Times New Roman', Times, serif" >{{ invoice.user}}</h5>
                            </div>
                        </div>
                    </div>
@@ -26,60 +29,45 @@
                
                
                <div>
-                   <table class="table table-bordered">
+                   <table class="table table-bordered" style="margin-top: -5%">
                        <thead>
                            <tr>
-                               <th>Description</th>
-                               <th>Amount</th>
+                               <th style="font-size: 1.10rem; font-family:Georgia, 'Times New Roman', Times, serif">Descripción</th>
+                               <th style="font-size: 1.10rem; font-family:Georgia, 'Times New Roman', Times, serif">Monto</th>
                            </tr>
                        </thead>
                        <tbody>
                            <tr>
-                               <td class="col-md-9">Payment for August 2016</td>
-                               <td class="col-md-3"><i class="fa fa-inr"></i> 15,000/-</td>
+                               <td class="col-md-9" style="font-size: 0.93rem; font-family:Georgia, 'Times New Roman', Times, serif">Habitación: {{ invoice.room}}</td>
+                               <td class="col-md-3" style="font-size: 0.93rem; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"><i class="fa fa-inr"></i> {{'Q '+ invoice.roomPrice}}</td>
+                           </tr>
+                           <tr *ngFor="let service of invoice.services">
+                               <td class="col-md-9" style=" font-size: 0.93rem;font-family:Georgia, 'Times New Roman', Times, serif">Servicios: {{service.service.name}}</td>
+                               <td class="col-md-3" style="font-size: 0.93rem; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"><i class="fa fa-inr"></i> Q. {{service.service.price}}</td>
                            </tr>
                            <tr>
-                               <td class="col-md-9">Payment for June 2016</td>
-                               <td class="col-md-3"><i class="fa fa-inr"></i> 6,00/-</td>
-                           </tr>
-                           <tr>
-                               <td class="col-md-9">Payment for May 2016</td>
-                               <td class="col-md-3"><i class="fa fa-inr"></i> 35,00/-</td>
+                               <td class="col-md-9" style="font-size: 0.93rem; font-family:Georgia, 'Times New Roman', Times, serif">Reservación: {{ invoice.days +' Días'}}</td>
+                               <td class="col-md-3" style=" font-size: 0.93rem;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"><i class="fa fa-inr"></i> ---</td>
                            </tr>
                            <tr>
                                <td class="text-right">
                                <p>
-                                   <strong>Total Amount: </strong>
+                                   <strong></strong>
                                </p>
-                               <p>
-                                   <strong>Late Fees: </strong>
-                               </p>
-                               <p>
-                                   <strong>Payable Amount: </strong>
-                               </p>
-                               <p>
-                                   <strong>Balance Due: </strong>
-                               </p>
+                               
+  
                                </td>
                                <td>
                                <p>
-                                   <strong><i class="fa fa-inr"></i> 65,500/-</strong>
-                               </p>
-                               <p>
-                                   <strong><i class="fa fa-inr"></i> 500/-</strong>
-                               </p>
-                               <p>
-                                   <strong><i class="fa fa-inr"></i> 1300/-</strong>
-                               </p>
-                               <p>
-                                   <strong><i class="fa fa-inr"></i> 9500/-</strong>
+                                   <strong ><i class="fa fa-inr"></i> </strong>
                                </p>
                                </td>
                            </tr>
                            <tr>
+                            
                               
-                               <td class="text-right"><h2><strong>Total: </strong></h2></td>
-                               <td class="text-left text-danger"><h2><strong><i class="fa fa-inr"></i> 31.566/-</strong></h2></td>
+                               <td class="text-right" style="font-family:Georgia, 'Times New Roman', Times, serif"><h2><strong>Total: </strong></h2></td>
+                               <td class="text-left text-danger" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"><h2><strong><i class="fa fa-inr"></i> {{'Q ' + invoice.total}}</strong></h2></td>
                            </tr>
                        </tbody>
                    </table>
@@ -89,13 +77,14 @@
                    <div class="receipt-header receipt-header-mid receipt-footer">
                        <div class="col-xs-8 col-sm-8 col-md-8 text-left">
                            <div class="receipt-right">
-                               <p><b>Date :</b> 15 Aug 2016</p>
-                               <h5 style="color: rgb(140, 140, 140);">Thanks for shopping.!</h5>
+                               <p style="font-size: 0.93rem; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"><b>Fecha Inicio:</b> {{invoice.startDate | date:'medium':'GMT' +'	-'}}</p> 
+                               <p style="font-size: 0.93rem; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"><b>Fecha Final:</b> {{invoice.finishDate | date:'medium':'GMT'}}</p>
+
                            </div>
                        </div>
-                       <div class="col-xs-4 col-sm-4 col-md-4">
+                       <div class="col-xs-4 col-sm-4 col-md-4" style="float: right; ">
                            <div class="receipt-left">
-                               <h1>Stamp</h1>
+                            <h1 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"><img src="../../../assets/img/hotel.jpg"  alt="" width="45rem" height="40rem" style= "margin-top: -1%; border-radius: 34%;"> Hotel: {{ invoice.hotel}}</h1>
                            </div>
                        </div>
                    </div>
@@ -104,4 +93,5 @@
            </div>    
        </div>
    </div>
+
 </body>

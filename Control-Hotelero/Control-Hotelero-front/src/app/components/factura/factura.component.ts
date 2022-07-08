@@ -8,14 +8,17 @@ import { ReservationResService } from 'src/app/services/reservationRes/reservati
   styleUrls: ['./factura.component.css']
 })
 export class FacturaComponent implements OnInit {
-  username:any
-  arrayInvoce: any
+  username:any;
+  room:any;
+  arrayInvoce: any;
+  search: any;
 
   constructor(
     private adminAppRest :AdminAppRestService,
     private reservationRest: ReservationResService
 
-  ) { }
+  ) { 
+  }
 
   ngOnInit(): void {
     this.username = this.adminAppRest.getIdentity().username;
@@ -26,7 +29,6 @@ export class FacturaComponent implements OnInit {
     this.reservationRest.getInvoices(this.username).subscribe({
       next:(res:any)=>{
         this.arrayInvoce = res.invoices;
-        console.log(this.arrayInvoce)
       },
       error: (err) => console.log(err.error.message || err.error)
     })

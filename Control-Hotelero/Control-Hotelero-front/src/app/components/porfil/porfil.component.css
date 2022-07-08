@@ -1,6 +1,10 @@
 body{
     font-family: Montserrat, sans-serif;
-    background: #28223f;
+    height: 100vh;
+  background-image: url('../../../assets/img/fondoBlanco.png') ;
+  background-attachment: fixed;
+  background-size: cover;
+
   }
   .container{
     user-select: none;
@@ -29,9 +33,10 @@ body{
     background: #292343;
   }
   .profile-name{
-    font-size: 25px;
+    font-size: 1.95rem;
     font-weight: bold;
     margin: 27px 0 0 120px;
+    
   }
   .about{
     margin-top: 35px;
@@ -61,7 +66,7 @@ body{
   }
   .container i{
     padding-left: 20px;
-    font-size: 20px;
+    font-size: 90px;
     margin-bottom: 20px;
     cursor: pointer;
     transition: .5s;

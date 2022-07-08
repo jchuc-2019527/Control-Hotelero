@@ -21,6 +21,8 @@ import { SearchUserPipe } from './pipes/search-user.pipe';
 import { SearchDirectionPipe } from './pipes/search-direction.pipe';
 import { SearchUhPipe } from './pipes/search-uh.pipe';
 import { FacturaComponent } from './components/factura/factura.component';
+import { SearchFPipe } from './pipes/search-f.pipe';
+import { UsersComponent } from './components/users/users.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { FacturaComponent } from './components/factura/factura.component';
     SearchUserPipe,
     SearchDirectionPipe,
     SearchUhPipe,
-    FacturaComponent
+    FacturaComponent,
+    SearchFPipe,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

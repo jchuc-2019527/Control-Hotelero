@@ -2,8 +2,8 @@
 <body>
     <app-nav-bar></app-nav-bar>
     <div id="turquesa">
-        <div style="padding: 1rem ;">
-            <button *ngIf="role == 'ADMIN-HOTEL'" [routerLink]="['/dataHotels/' + hotel]"  class="btn btn-light btn-lg "> Observar Mi Hotel</button>
+        <div style="padding: 1rem ; margin-left: -5%; margin-top: 2%;">
+            <span  *ngIf="role == 'ADMIN-HOTEL'" ><a [routerLink]="['/dataHotels/' + hotel]"></a></span>
           </div>
     
         <div class="divimg">

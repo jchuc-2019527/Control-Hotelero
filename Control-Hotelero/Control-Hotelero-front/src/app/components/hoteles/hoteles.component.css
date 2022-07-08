@@ -1,14 +1,16 @@
 body{
   margin: 0;
   padding: 0px;
-  min-height: 50vh;
-  background: rgb(255, 255, 255);
   display: flex;
   align-items: center;
   margin-left: 1%;
   font-family: consolas;
   justify-content: center;
   margin-right: 2%;
+  height: 100vmin;
+  background-image: url('../../../assets/img/fondoBlanco.png') ;
+  background-attachment: fixed;
+  background-size: cover;
   
 }
 #menu{
@@ -31,6 +33,7 @@ margin-top: 2%;
   position: relative;
   cursor: pointer;
   border-color: transparent;
+  background: transparent;
  
 }
 

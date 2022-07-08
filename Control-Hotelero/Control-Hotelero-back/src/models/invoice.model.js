@@ -9,6 +9,7 @@ const invoiceSchema = mongoose.Schema({
     user: String,
     hotel: String,
     room: String,
+    roomPrice: String,
     services: [{
         service: {
             idService: {type: mongoose.Schema.ObjectId, ref: "ServiceHotel"},

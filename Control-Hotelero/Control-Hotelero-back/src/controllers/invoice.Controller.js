@@ -1,6 +1,8 @@
 'use strict'
 const Invoice = require ('../models/invoice.model')
 const Reservation = require ('../models/reservations.model')
+const Room = require('../models/rooms.model')
+const User = require('../models/user.model');
 
 exports.generateInvoice = async (req, res) => {
     try {
@@ -17,6 +19,8 @@ exports.generateInvoice = async (req, res) => {
             total: reservation.total,
             days: reservation.days
         }
+        const roomPrice = await Room.findOne({name: data.room})
+        data.roomPrice = roomPrice.price;
         let invoice = new Invoice(data);
         await invoice.save();
         const reservationUpdated = await Reservation.findOneAndUpdate({_id: idReservation}, {status: true}, {new: true});
@@ -35,7 +39,7 @@ exports.getInvoices  = async(req, res)=>{
         
         const username= req.params.username
         
-        const invoices = await Invoice.find({user: username});
+        const invoices = await Invoice.find({user: username}).populate('user').populate('hotel').populate('room');
         return res.status(200).send({invoices})
         
     } catch (error) {
