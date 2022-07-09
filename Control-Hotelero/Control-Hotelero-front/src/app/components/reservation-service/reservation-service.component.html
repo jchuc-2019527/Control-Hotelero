@@ -4,11 +4,15 @@
     <h1 style="text-align:center ;">Seleccionar Servicios</h1>
     <hr style="margin: 3rem;">
     <br>
-    <div class="mb-3" >
-      <a (click)="confirmateReservation()" routerLink="/bienvenida"  class="btn btn-warning">Confirmar</a>
-      <a (click)="cancelReservation()"  routerLink="/bienvenida"  class="btn btn-danger">Cancelar</a>
+
+    <div  class="multi-buttonD">
+      <button id="b" class="btn btn-success m-3 "
+      (click)="confirmateReservation()" routerLink="/bienvenida">Confirmar</button>
     </div>
-    
+    <div  class="multi-buttonC" style="margin-left:8%; margin-top: -3.48%;" >
+      <button id="b" class="btn btn-success m-3 "
+      (click)="cancelReservation()" >Cancelar</button>
+    </div>
 
   <div *ngFor="let service of arrayService" id="w">
     
@@ -17,11 +21,15 @@
               <div class="col-sm-7">
                 <div class="card-block">
                   <!--           <h4 class="card-title">Small card</h4> -->
-                  <h1 style="text-align: center;">{{service.name}}</h1>
+                  <h1 style="text-align: center; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">{{service.name}}</h1>
                   <hr>
-                  <h3 style="text-align: center;">{{'Q ' +service.price}}</h3>
+                  <h3 style=" font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 1.65rem;">Precio:{{'Q ' +service.price}}</h3>
                   <br>
-                  <a  (click)="pushServices(service._id)"  class="btn btn-primary btn-sm">Agregar Servicio</a>
+                  <div  class="multi-buttonA"  style = " margin: 1rem; margin-top: 30%; margin-left: 25%;">
+                    <button id="b" class="btn btn-success m-3 "
+                     (click)="pushServices(service._id)">Agregar Servicio</button>
+                  </div>
+
                 </div>
               </div>
       

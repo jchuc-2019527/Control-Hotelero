@@ -1,7 +1,9 @@
 body {
-    background-color:  #eee;
-    height: 100vh;
-    background-size: cover;
+    height: 100%;
+  background-image: url('../../../assets/img/fondoBlanco.png') ;
+  background-attachment: fixed;
+  background-size: cover;
+    
   }
   .title {
    
@@ -17,16 +19,18 @@ body {
       border: none;
       border-top: 1px solid rgba(34, 36, 38, .1);
       box-shadow: none;
+      
        
   }
   .card {
       font-size: 1em;
       overflow: hidden;
       padding: 5;
-      border: none;
+      border:50px;
       border-radius: .28571429rem;
-      box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+      box-shadow: 0 1px 3px 0 #000000, 0 0 0 1px #000000;
       margin-top:20px;
+      
   }
   
   .carousel-indicators li {
@@ -34,6 +38,7 @@ body {
       width: 12px;
       height: 12px;
       background-color: #404040;
+      
   }
   .carousel-indicators li {
       border-radius: 12px;
@@ -63,6 +68,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    
   }
 
   img{
@@ -71,7 +78,36 @@ body {
   }
 
   div.card{
-    width: 30rem;
-    height: 15rem;
+    width: 50rem;
+    height: 25rem;
 
   }
+   /* BOTON A*/
+
+ .multi-buttonA button{
+  height: 41px;
+  width: 250px;
+  background: linear-gradient(to bottom, #1624e9, #3d01c9);
+  font-weight: bold;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  margin: -5px;
+  padding: 0;
+  stroke: black;
+  outline: none;
+}
+.multi-buttonA :nth-child(1){
+  border-radius: 20px 20px 20px 20px;
+}
+.multi-buttonA :nth-child(3){
+  border-radius: 0 20px 20px 0;
+}
+button:hover{
+  cursor: pointer;
+  filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.45));
+}
+button:active{
+  filter: none;
+  transform: scale(.95);
+}

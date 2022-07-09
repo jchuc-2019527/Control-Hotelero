@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { ReservationResService } from 'src/app/services/reservationRes/reservation-res.service';
 import Swal from 'sweetalert2';
 
@@ -16,7 +17,8 @@ export class ReservationServiceComponent implements OnInit {
 
   constructor(
     public activateRoute: ActivatedRoute,
-    private reservationRest: ReservationResService
+    private reservationRest: ReservationResService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -79,24 +81,55 @@ export class ReservationServiceComponent implements OnInit {
   };
 
   cancelReservation(){
-    this.reservationRest.cancelReservation(this.idReservation).subscribe({
-      next:(res:any)=>{
-        Swal.fire({
-          title: res.message,
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 2000,
-          position:'center'
-        })
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
       },
-      error:(err)=>Swal.fire({
-        title: err.error.message,
-        icon: 'error',
-        timer: 4000,
-        position:'center'
-      })
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Esta seguro de cancelar su reservación?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si!',
+      cancelButtonText: 'No',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.reservationRest.cancelReservation(this.idReservation).subscribe({
+          next:(res:any)=>{
+            this.router.navigateByUrl('/bienvenida')
+          },
+          error:(err)=>Swal.fire({
+            title: err.error.message,
+            icon: 'error',
+            timer: 4000,
+            position:'center'
+          })
+        })
+        swalWithBootstrapButtons.fire(
+          'Reservación Cancelada!',
+          'Su reservación ha sido Cancelada.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'No se logro cancelar su reservación :)',
+          'error'
+        )
+      }
     })
   };
+
+
+
 
 
 }

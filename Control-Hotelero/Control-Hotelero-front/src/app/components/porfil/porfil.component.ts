@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserRestService } from 'src/app/services/userRest/user-rest.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 import { userModel } from 'src/app/models/user.model';
 import { AdminAppRestService } from 'src/app/services/adminAppRest/admin-app-rest.service';
 @Component({
@@ -18,7 +19,8 @@ export class PorfilComponent implements OnInit {
   constructor(
     private userRest: UserRestService,
     private activateRoute: ActivatedRoute,
-    private adminAppRest: AdminAppRestService
+    private adminAppRest: AdminAppRestService,
+    private router: Router
     
   ) {
     this.user = new userModel('','','','','')
@@ -67,28 +69,52 @@ export class PorfilComponent implements OnInit {
       })
     })
   };
+  
 
   deleteUser(){
-    this.userRest.deleteUser(this.idClient).subscribe({
-      next:(res:any)=>{
-        Swal.fire({
-          title: res.message,
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 2000,
-          position:'center'
-        })
-        this.getUser()
-        
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
       },
-      error:(err)=>Swal.fire({
-        title: err.error.message,
-        icon: 'error',
-        timer: 4000,
-        position:'center'
-      })
+      buttonsStyling: false
+    })
+  
+    swalWithBootstrapButtons.fire({
+      title: 'Esta seguro de eliminar su cuenta?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminar!',
+      cancelButtonText: 'No, cancelar!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.userRest.deleteUser(this.idClient).subscribe({
+          next:(res:any)=>{
+            this.router.navigateByUrl('/home')
+            //this.getUser()
+          },
+        })
+        swalWithBootstrapButtons.fire(
+          'Cuenta eliminada!',
+          'Su cuenta ha sido eliminada.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'No se elimino su cuenta:)',
+          'error'
+        )
+      }
     })
   };
+
+  
 
   logOut(){
     localStorage.clear(); //LIMPIA EL LOCAL STORAGE

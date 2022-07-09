@@ -1,7 +1,8 @@
 body {
-    background-color:  #eee;
-    height: 100vh;
-    background-size: cover;
+  height: 100%;
+  background-image: url('../../../assets/img/fondoBlanco.png') ;
+  background-attachment: fixed;
+  background-size: cover;
   }
   .title {
    
@@ -25,7 +26,7 @@ body {
       padding: 5;
       border: none;
       border-radius: .28571429rem;
-      box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+      box-shadow: 0 1px 3px 0 #000000, 0 0 0 1px #d4d4d5;
       margin-top:20px;
   }
   
@@ -71,7 +72,140 @@ body {
   }
 
   div.card{
-    width: 30rem;
-    height: 15rem;
+    width: 50rem;
+    height: 25rem;
 
   }
+
+    /* BOTON A*/
+
+ .multi-buttonA button{
+  height: 41px;
+  width: 250px;
+  background: linear-gradient(to bottom, #1624e9, #3d01c9);
+  font-weight: bold;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  margin: -5px;
+  padding: 0;
+  stroke: black;
+  outline: none;
+}
+.multi-buttonA :nth-child(1){
+  border-radius: 20px 20px 20px 20px;
+}
+.multi-buttonA :nth-child(3){
+  border-radius: 0 20px 20px 0;
+}
+button:hover{
+  cursor: pointer;
+  filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.45));
+}
+button:active{
+  filter: none;
+  transform: scale(.95);
+}
+/* boton conf - cancel */
+
+span{
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+span a{
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+
+}
+span a:before,
+span a:after{
+  position: absolute;
+  content: "Confirmar";
+  height: 55px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid black;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+span a:before{
+  color: #fff;
+  background: #000;
+  transform: rotateY(0deg) translateZ(25px);
+}
+span a:after{
+  color: #000;
+  transform: rotateX(90deg) translateZ(25px);
+}
+span a:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+
+
+.multi-buttonD button{
+  height: 41px;
+  width: 160px;
+  background: linear-gradient(to bottom, #01ca4e, #15ffa5);
+  font-weight: bold;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  margin: -5px;
+  padding: 0;
+  stroke: black;
+  outline: none;
+}
+.multi-buttonD :nth-child(1){
+  border-radius: 20px 20px 20px 20px;
+}
+.multi-buttonD :nth-child(3){
+  border-radius: 0 20px 20px 0;
+}
+button:hover{
+  cursor: pointer;
+  filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.45));
+}
+button:active{
+  filter: none;
+  transform: scale(.95);
+}
+
+/*cancelar*/
+
+.multi-buttonC button{
+  height: 41px;
+  width: 160px;
+  background: linear-gradient(to bottom, #cc0811, #3d040b);
+  font-weight: bold;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  margin: -5px;
+  padding: 0;
+  stroke: black;
+  outline: none;
+}
+.multi-buttonC :nth-child(1){
+  border-radius: 20px 20px 20px 20px;
+}
+.multi-buttonC :nth-child(3){
+  border-radius: 0 20px 20px 0;
+}
+button:hover{
+  cursor: pointer;
+  filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.45));
+}
+button:active{
+  filter: none;
+  transform: scale(.95);
+}
