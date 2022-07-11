@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
+import {environment} from 'src/environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -35,4 +36,9 @@ export class AdminHotelRestService {
     }
     return identity
   };
+
+  getClientes(idAdminHotel: string){
+    return this.http.get(environment.baseUrl + 'adminHotel/getClientes/' + idAdminHotel, {headers:this.httOptions})
+  };
+
 }

@@ -13,6 +13,7 @@ import { FacturaComponent } from './components/factura/factura.component';
 import { UsersComponent } from './components/users/users.component';
 import { ReservationServiceComponent } from './components/reservation-service/reservation-service.component';
 import { GraphicComponent } from './components/graphic/graphic.component';
+import { UserAppComponent } from './components/user-app/user-app.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -28,7 +29,8 @@ const routes: Routes = [
   {path:'factura', component:FacturaComponent},
   {path: 'porfil/:id', component:PorfilComponent},
   {path: 'users', component: UsersComponent},
-  {path: 'graphic', component:GraphicComponent}
+  {path: 'graphic', component:GraphicComponent},
+  {path: 'userApp', component: UserAppComponent}
 ];
 
 @NgModule({

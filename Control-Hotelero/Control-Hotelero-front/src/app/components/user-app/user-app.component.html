@@ -1,0 +1,20 @@
+<body>
+<app-nav-bar></app-nav-bar>
+<div  class="container">
+    <div *ngFor="let user of users" class="card" >
+      <div class="card-header">
+        <img src="../../../assets/img/perf.png" alt="rover" />
+      </div>
+      <div class="card-body">
+        <span style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 1.10rem; margin-top: -50px;" class="tag tag-teal">{{user.role}}</span>
+        <h4 style="font-family:Georgia, 'Times New Roman', Times, serif; font-size: 1.75rem; margin-top: 5%;">
+          Nombre:{{user.name}}
+        </h4>
+        <p style="font-family:Georgia, 'Times New Roman', Times, serif; font-size: 1.35rem;margin-top: 5%;">
+            Usuario:{{user.username}}
+        </p>
+
+      </div>
+    </div>
+    
+

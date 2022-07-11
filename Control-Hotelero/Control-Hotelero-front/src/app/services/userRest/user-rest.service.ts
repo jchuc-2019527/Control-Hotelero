@@ -58,4 +58,5 @@ export class UserRestService {
     return this.http.delete(environment.baseUrl + 'user/deleteUser/' + idCliente, {headers:this.httpOptions})
   };
 
+
 }

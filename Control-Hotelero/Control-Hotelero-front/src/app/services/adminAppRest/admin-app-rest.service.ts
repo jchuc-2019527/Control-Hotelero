@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
+import {environment} from 'src/environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +35,9 @@ export class AdminAppRestService {
       identity = '';
     }
     return identity
+  };
+
+  getUsersbyAdmin(){
+    return this.http.get(environment.baseUrl + 'adminApp/getUsersbyAdmin' , {headers: this.httOptions});
   };
 }

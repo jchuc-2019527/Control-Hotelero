@@ -87,4 +87,15 @@ exports.getAdminHotel = async (req, res)=>{
     }
 };
 
+// admin App puede ver sus usuarios
+
+exports.getUsersbyAdmin = async (req, res)=>{
+    try {
+        const users = await User.find({role:'CLIENT'});
+        return res.status(200).send({users});
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
 

@@ -9,23 +9,19 @@
         <div class="header" style="font-family:Georgia, 'Times New Roman', Times, serif">Usuarios</div>
     
         <table cellspacing="0">
-          <thead>
+          <thead >
             <tr>
-              <th >ID</th>
-              <th> Nombre </th>
-              <th>Nombre de Usuario</th>
-              <th>Hospedado</th>
+              <th style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size:1.20rem;text-align: center;" >N.</th>
+              <th style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size:1.20rem;text-align: center;">Nombre de Usuario</th>
               
            </tr>
     
           </thead>
       
-          <tbody>
+          <tbody *ngFor="let user of arrayClient   let i = index" >
             <tr >
-              <td >N..}</td>
-              <td>name..</td>
-              <td>username..</td>
-              <td>habitacion..</td>
+              <td style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size:1.00rem; text-align: center; ">{{i+1}}</td>
+              <td  style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size:1.00rem;text-align: center;">{{user}}</td>
            </tr>
     
           </tbody>

@@ -25,6 +25,7 @@ import { SearchFPipe } from './pipes/search-f.pipe';
 import { UsersComponent } from './components/users/users.component';
 import { GraphicComponent } from './components/graphic/graphic.component';
 import { ChartsModule } from '@rinminase/ng-charts';
+import { UserAppComponent } from './components/user-app/user-app.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ChartsModule } from '@rinminase/ng-charts';
     FacturaComponent,
     SearchFPipe,
     UsersComponent,
-    GraphicComponent
+    GraphicComponent,
+    UserAppComponent
   ],
   imports: [
     BrowserModule,
