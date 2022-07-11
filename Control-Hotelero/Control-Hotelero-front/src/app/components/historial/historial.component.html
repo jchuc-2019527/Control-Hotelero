@@ -19,7 +19,7 @@
 				<div class="postcard__preview-txt"  style="font-size: 1.20rem; text-align:center ;"><strong>Habitación: {{reservation.room.name + ' | ' + 'Q '+reservation.room.price}}</strong> </div>
 				<div class="postcard__subtitle small" style="text-align: center;">
 					<time datetime="2020-05-25">
-						<i class="fas fa-calendar-alt mr-2" ></i><td style="font-size: 1.09rem; ">{{reservation.startDate | date:'medium':'GMT' +'	-'}}</td>   <i class="fas fa-calendar-alt mr-2"></i><td style="font-size: 1.09rem">{{reservation.finishDate | date:'medium':'GMT'}}</td>
+						<i class="fas fa-calendar-alt mr-2" ></i><td style="font-size: 1.09rem; ">{{reservation.startDate | date:'short':'GMT'}}</td>   <i class="fas fa-calendar-alt mr-2"></i><td style="font-size: 1.09rem">{{reservation.finishDate | date:'short':'GMT'}}</td>
 					</time>
 				</div>
 				<div class="postcard__bar"></div>

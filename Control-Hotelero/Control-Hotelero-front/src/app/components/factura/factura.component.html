@@ -42,7 +42,7 @@
                                <td class="col-md-3" style="font-size: 0.93rem; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"><i class="fa fa-inr"></i> {{'Q '+ invoice.roomPrice}}</td>
                            </tr>
                            <tr *ngFor="let service of invoice.services">
-                               <td class="col-md-9" style=" font-size: 0.93rem;font-family:Georgia, 'Times New Roman', Times, serif">Servicios: {{service.service.name}}</td>
+                               <td class="col-md-9" style=" font-size: 0.93rem;font-family:Georgia, 'Times New Roman', Times, serif">Servicio: {{service.service.name}}</td>
                                <td class="col-md-3" style="font-size: 0.93rem; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"><i class="fa fa-inr"></i> Q. {{service.service.price}}</td>
                            </tr>
                            <tr>
@@ -77,7 +77,7 @@
                    <div class="receipt-header receipt-header-mid receipt-footer">
                        <div class="col-xs-8 col-sm-8 col-md-8 text-left">
                            <div class="receipt-right">
-                               <p style="font-size: 0.93rem; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"><b>Fecha Inicio:</b> {{invoice.startDate | date:'medium':'GMT' +'	-'}}</p> 
+                               <p style="font-size: 0.93rem; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"><b>Fecha Inicio:</b> {{invoice.startDate | date:'medium':'GMT' }}</p> 
                                <p style="font-size: 0.93rem; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"><b>Fecha Final:</b> {{invoice.finishDate | date:'medium':'GMT'}}</p>
 
                            </div>

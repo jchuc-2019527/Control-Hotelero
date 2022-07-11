@@ -1,6 +1,7 @@
-<nav *ngIf="!role" id="menu">
-  <button id="regresar" class="btn btn-success " routerLink="/home"> Regresar </button>
-</nav>
+
+<div *ngIf="!role"  id="divBtn">
+  <button id="boton" routerLink="/home" >Regresar</button>
+</div>
 
 <app-nav-bar *ngIf="role"></app-nav-bar>
 <br>

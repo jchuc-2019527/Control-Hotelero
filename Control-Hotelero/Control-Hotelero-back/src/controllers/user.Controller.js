@@ -162,5 +162,5 @@ exports.deleteUser = async (req, res) => {
     } catch (err) {
         console.log(err);
         return err;  
-    } 
+    }
 };

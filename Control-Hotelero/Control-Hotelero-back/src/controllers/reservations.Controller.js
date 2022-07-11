@@ -3,6 +3,7 @@ const {validateData, getRange} = require ('../utils/validate');
 const Reservation = require ('../models/reservations.model');
 const Room = require ('../models/rooms.model');
 const Service = require ('../models/serviceHotel.model');
+const Hotel = require ('../models/hotel.model')
 
 
 //Creación de Reservación (Hotel y Usuario)
@@ -21,6 +22,9 @@ exports.addReservation = async (req, res) => {
         }
         let reservation = new Reservation(data);
         await reservation.save();
+        //Actualizar request Hotel
+        const hotel = await Hotel.findOne({_id: idHotel});
+        const updateHotel = await Hotel.findByIdAndUpdate({_id: idHotel}, {request: hotel.request + 1}, {new:true});
         return res.status(200).send({message: "Reservation created successfully", reservation});
     } catch (err) {
         console.log(err); 

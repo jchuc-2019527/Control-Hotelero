@@ -368,3 +368,34 @@ input.search-submit {
 input.search-text::-webkit-search-cancel-button {
 	cursor:pointer;
 }
+
+/*Botones*/
+
+#divBtn{
+  background-color: #273746 ;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-bottom: -1rem;
+
+}
+
+#boton{
+  height: 3rem;
+  width: 13rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  background-color: white;
+  text-decoration-color: black;
+  border: solid 4px #808B96;
+  border-radius: 8px;
+}
+#boton:hover{
+  border: solid 4px #5499C7;
+  height: 3.2rem;
+  width: 13.2rem;
+}

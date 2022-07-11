@@ -23,6 +23,8 @@ import { SearchUhPipe } from './pipes/search-uh.pipe';
 import { FacturaComponent } from './components/factura/factura.component';
 import { SearchFPipe } from './pipes/search-f.pipe';
 import { UsersComponent } from './components/users/users.component';
+import { GraphicComponent } from './components/graphic/graphic.component';
+import { ChartsModule } from '@rinminase/ng-charts';
 
 @NgModule({
   declarations: [
@@ -44,13 +46,15 @@ import { UsersComponent } from './components/users/users.component';
     SearchUhPipe,
     FacturaComponent,
     SearchFPipe,
-    UsersComponent
+    UsersComponent,
+    GraphicComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,41 +1,5 @@
-#menu{
-  background: #273746;
-  padding-left: 41%;
-  height: auto;
-}
-#textBarra{
-  margin: 0.4rem ;
-}
-
-#bienvenida{
-  margin: 2rem;
-  font-size: 4rem;
-}
-
-#textBarra:hover{
-  background-color:#F9E79F; 
-  border-radius: 2rem;
-}
-#menu ul li{
-  display: inline-block;
-  border-right: 1px solid #cccccc;
-
-}
-#menu ul li a{
-  display: block;
-  padding: 15px;
-  color: white;
-}
-
-#menu ul li:hover{
-  color: rgb(50, 2, 104);
-  cursor: pointer;
-}
-
-#menu ul li:hover a{
-  display: block;
-  color: black;
-
+body{
+  height: 100%;
 }
 
 /*modal*/
@@ -161,3 +125,36 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   -ms-transform: scale(0.95);
   transform: scale(0.95);
 }
+
+/*Botones*/
+
+#divBtn{
+  background-color: #273746 ;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-bottom: -1rem;
+
+}
+
+#boton{
+  height: 3rem;
+  width: 13rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  background-color: white;
+  text-decoration-color: black;
+  border: solid 4px #808B96;
+  border-radius: 8px;
+}
+#boton:hover{
+  border: solid 4px #5499C7;
+  height: 3.2rem;
+  width: 13.2rem;
+}
+
+

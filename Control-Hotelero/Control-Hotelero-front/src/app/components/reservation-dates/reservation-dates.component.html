@@ -6,7 +6,7 @@
   <br>
   <div id="divDate" >
     <h4 style="text-align: center;">FECHAS OCUPADAS</h4>
-    <ul style="text-align: center;" *ngFor="let room of roomDates.dates">{{room.date.startDate}} | {{room.date.finishDate}}</ul>
+    <ul style="text-align: center;" *ngFor="let room of roomDates.dates">{{room.date.startDate | date:'medium':'GMT'}} ---- {{room.date.finishDate | date:'medium':'GMT'}}</ul>
   </div>
 <div id="global">
   
@@ -17,12 +17,13 @@
         <input [(ngModel)]="this.dates.startDate" name="start" type="date">
     </div>
     
-    <div class="form-group">
+    <div class="form-group" >
       <label for="finish">Fecha Final</label> <br>
       <input [(ngModel)]="this.dates.finishDate" name="finish" type="date">
   </div>
-  <div>
-    <a (click)="pushDate()"  style="align-items: center;"  class="btn btn-primary btn-sm">Confirmar Fechas</a>
+  
+  <div id="divBoton">
+    <button class="noselect" (click)="pushDate()"  style="align-items: center;">Confirmar Fecha</button>
   </div>
 
 </div>

@@ -5,14 +5,13 @@
     <hr style="margin: 3rem;">
     <br>
 
-    <div  class="multi-buttonD">
-      <button id="b" class="btn btn-success m-3 "
-      (click)="confirmateReservation()" routerLink="/bienvenida">Confirmar</button>
+    <div id="divBotones">
+      <button id="btnConfirmar" class="btn btn-success m-3 "
+      (click)="confirmateReservation()" routerLink="/bienvenida">CONFIRMAR</button>
+      <button id="btnCancelar" class="btn btn-success m-3 "
+      (click)="cancelReservation()" >CANCELAR</button>
     </div>
-    <div  class="multi-buttonC" style="margin-left:8%; margin-top: -3.48%;" >
-      <button id="b" class="btn btn-success m-3 "
-      (click)="cancelReservation()" >Cancelar</button>
-    </div>
+
 
   <div *ngFor="let service of arrayService" id="w">
     
@@ -25,8 +24,8 @@
                   <hr>
                   <h3 style=" font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 1.65rem;">Precio:{{'Q ' +service.price}}</h3>
                   <br>
-                  <div  class="multi-buttonA"  style = " margin: 1rem; margin-top: 30%; margin-left: 25%;">
-                    <button id="b" class="btn btn-success m-3 "
+                  <div id="divBoton">
+                    <button class="noselect"
                      (click)="pushServices(service._id)">Agregar Servicio</button>
                   </div>
 
@@ -35,7 +34,7 @@
       
               <div class="col-sm-5">
                 <img 
-                  src="../../../assets/img/habiAct.png"
+                  src="../../../assets/img/service.jpg"
                   alt=""
                 />
               </div>

@@ -1,0 +1,24 @@
+<body>
+    <app-nav-bar></app-nav-bar>
+    <h1 style="text-align: center; margin-top: 2rem;">NO. DE SOLICITUDES</h1>
+    <br>
+    <div>
+        <hr>
+            
+            <br />
+            <div class="row justify-content-center align-items-center">
+              <div class="col-xl-7">
+                <div class="card mb-7">
+        
+                  <div class="card-footer p-4 pt-0 bg-transparent border-top-20" height="300000px">
+                    <div style="display: block">
+                      <canvas baseChart chartType="bar" [datasets]="chartData1" [colors]="chartColors" [labels]="chartLabels1"
+                        [options]="chartOptions1" [plugins]="chartPlugins1" [legend]="chartLegend1">
+                      </canvas>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+            </div>
+    </div>
+</body>

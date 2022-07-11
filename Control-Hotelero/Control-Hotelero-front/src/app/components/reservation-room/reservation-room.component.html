@@ -16,19 +16,17 @@
                 <h2 style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 1.55rem;">Tipo de Habitación:{{room.type}}</h2>
                 <h3 style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 1.55rem;" > Precio: {{'Q ' +room.price}}</h3>
                 
-              <div  class="multi-buttonA"  style = " margin: 1rem; margin-top: 30%; margin-left: 25%;">
-                <button id="b" class="btn btn-success m-3 "
-                (click)="updateRoom(room._id)" [routerLink]="['/reservationDates/' + idReservation +'/' + room._id +'/' + idHotel]">Reservar</button>
+              <div id="divBoton">
+                <button class="noselect" (click)="updateRoom(room._id)" [routerLink]="['/reservationDates/' + idReservation +'/' + room._id +'/' + idHotel]">Reservar</button>
               </div>
 
-              
               </div>
             </div>
     
             <div class="col-sm-5">
               <img 
                 
-                src="../../../assets/img/habiAct.png"
+                src="../../../assets/img/room.jpg"
                 alt=""
               />
             </div>
