@@ -2,7 +2,10 @@
 <app-nav-bar></app-nav-bar>
 <br>
 <div style="padding: 1rem ;">
-  <button (click)="createReservation()"  *ngIf="role == 'CLIENT'" style="margin-left: 2rem;" class="btn btn-outline-dark btn-lg "> Realizar Reservación </button>
+  <div *ngIf="role == 'CLIENT'"  class="multi-buttonG"  style="margin-left: 1rem;">
+    <button (click)="createReservation()" id="b" class="btn btn-success m-3 ">Realizar Reservación </button>
+  </div>
+  
   <span *ngIf="role == 'ADMIN-HOTEL'"  style="margin-left: 2rem;"><a [routerLink]="['/historialAdmin/' + idHotel]"></a></span></div>
 
 <!-- Habitaciones -->

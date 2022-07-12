@@ -157,4 +157,34 @@
     transform: translateZ(-25px) rotateX(-90deg);
   }
 
+  /* BOTON G*/
+
+ .multi-buttonG button{
+  height: 46px;
+  width: 250px;
+  background: linear-gradient(to bottom, #000000, #2f057c);
+  font-weight: bold;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  margin: -5px;
+  padding: 0;
+  stroke: black;
+  outline: none;
+}
+.multi-buttonG :nth-child(1){
+  border-radius: 20px 20px 20px 20px;
+}
+.multi-buttonG :nth-child(3){
+  border-radius: 0 20px 20px 0;
+}
+button:hover{
+  cursor: pointer;
+  filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.45));
+}
+button:active{
+  filter: none;
+  transform: scale(.95);
+}
+  
   
