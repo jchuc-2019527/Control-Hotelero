@@ -51,7 +51,7 @@ export class GraphicComponent implements OnInit {
         this.hotels = res.hoteles;
 
         this.hotels.forEach((hotel: any) => {
-            this.chartLabels1.push(hotel.name);
+            this.chartLabels1.push(hotel.nameHotel);
             this.chartData1[0].data.push(hotel.request);
             this.chartColors[0].backgroundColor.push(
               `#${Math.floor(Math.random() * 16777215).toString(16)}`
