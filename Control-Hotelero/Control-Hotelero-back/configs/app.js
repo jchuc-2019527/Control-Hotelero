@@ -4,7 +4,9 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
-const port = 3200 || process.env.PORT;
+
+const port = process.env.PORT || 3200;
+
 const userRoutes = require('../src/routes/user.routes');
 const adminAppRoutes = require('../src/routes/adminApp.routes');
 const adminHotelRoutes = require('../src/routes/adminHotel.routes');
