@@ -38,7 +38,7 @@ export class AdminHotelRestService {
   };
 
   getClientes(idAdminHotel: string){
-    return this.http.get(environment.baseUrl + 'adminHotel/getClientes/' + idAdminHotel, {headers:this.httOptions})
+    return this.http.get(environment.baseUrl + 'adminHotel/getClientes/' + idAdminHotel, {headers:this.httOptions.set('Authorization', this.getToken())})
   };
 
 }

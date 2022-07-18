@@ -38,6 +38,6 @@ export class AdminAppRestService {
   };
 
   getUsersbyAdmin(){
-    return this.http.get(environment.baseUrl + 'adminApp/getUsersbyAdmin' , {headers: this.httOptions});
+    return this.http.get(environment.baseUrl + 'adminApp/getUsersbyAdmin' , {headers: this.httOptions.set('Authorization', this.getToken())});
   };
 }

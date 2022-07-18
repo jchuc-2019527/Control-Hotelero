@@ -26,6 +26,7 @@ import { UsersComponent } from './components/users/users.component';
 import { GraphicComponent } from './components/graphic/graphic.component';
 import { ChartsModule } from '@rinminase/ng-charts';
 import { UserAppComponent } from './components/user-app/user-app.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { UserAppComponent } from './components/user-app/user-app.component';
     SearchFPipe,
     UsersComponent,
     GraphicComponent,
-    UserAppComponent
+    UserAppComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
