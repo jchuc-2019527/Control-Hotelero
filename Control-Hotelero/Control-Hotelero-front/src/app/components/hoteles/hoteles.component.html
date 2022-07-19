@@ -18,40 +18,43 @@
   <input style="margin-left: 2%" type="search" name="q"  [(ngModel)]="searchDi" class="search-text" placeholder="Buscar por dirección..." autocomplete="off">
 </form>
 <br>
+<br>
 
-<body >
-    <div class="row" style="margin-top: -21%">
-    <div class="container"  *ngFor="let hotel of hotels | search:search | searchDirection:searchDi">
-        <div class="card">
-            <div class="face face1" >
-                <div class="content" >
-                    <img src="../../../assets/img/hotel.jpg">
-                    <h3>{{hotel.nameHotel}}</h3>
-                </div>
-            </div>
-            <div class="face face2"  >
-                <div class="content">
-                   <h5>Dirección: {{hotel.direction}}</h5>
-                    <h5>Contacto: {{hotel.phone}}</h5>
-                    <h5>Email: {{hotel.email}}</h5>
-                    <div>
-                    <div  class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
-                        <button *ngIf="role == 'CLIENT'" id="a" class="btn btn-success "  [routerLink]="['/dataHotels/' + hotel._id]" >Ver más</button>
-                      </div>
-                      <div  class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
-                        <button *ngIf="role == 'ADMIN-APP'" id="a" class="btn btn-success"  (click)="deleteHotel(hotel._id)" >Elimnar</button>
-                      </div>
-                      <div  class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center; margin-left: 3%;">
-                        <button *ngIf="role == 'ADMIN-APP' and role =='ADMIN-HOTEL'" (click)="getHotel(hotel._id)" id="a" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModalCenterHotelUpdate" >Editar</button>
-                      </div>
-                    </div>
-                </div>
-            </div>
+<!--CONTAINER-->
+<div class="container mx-auto mt-4">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let hotel of hotels | search:search | searchDirection:searchDi">
+      <div class="card" style="width: 18rem;">
+  <img src="../../../assets/img/perfilHotel.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title" style="text-align:center ;">{{hotel.nameHotel}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted" style="text-align:center ;">¡Realiza tu reservación!</h6>
+        <p>Dirección: {{hotel.direction}}</p>
+        <p>Contacto: {{hotel.phone}}</p>
+        <p>Email: {{hotel.email}}</p>
+        <div>
+          <div  class="multi-buttonA"  style = "float:none; margin-top: 20%; align-items: center;">
+              <button *ngIf="role == 'CLIENT'" id="a" class="btn btn-success "  [routerLink]="['/dataHotels/' + hotel._id]" >Ver más</button>
+          </div>
+          <div id="botones" style="text-align:center">
+            <button *ngIf="role == 'ADMIN-APP' and role =='ADMIN-HOTEL'" (click)="getHotel(hotel._id)" id="actualizar" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModalCenterHotelUpdate" >Editar</button>
+            <button *ngIf="role == 'ADMIN-APP'" id="eliminar" class="btn btn-success"  (click)="deleteHotel(hotel._id)" >Eliminar</button>
+          </div>
+   
         </div>
-    </div>
+        <div style="text-align:center; margin-bottom: 1rem;" >
+          <img style="height: 1.3rem; margin-right: 0.7rem; margin-left: 0.7rem;" src="../../../assets/img/estrella.png" alt="">
+          <img style="height: 1.3rem; margin-right: 0.7rem; margin-left: 0.7rem;" src="../../../assets/img/estrella.png" alt="">
+          <img style="height: 1.3rem; margin-right: 0.7rem;margin-left: 0.7rem;" src="../../../assets/img/estrella.png" alt="">
+          <img style="height: 1.3rem; margin-right: 0.7rem;margin-left: 0.7rem;" src="../../../assets/img/estrella.png" alt="">
+          <img style="height: 1.3rem; margin-right: 0.7rem;margin-left: 0.7rem;" src="../../../assets/img/estrella.png" alt="">   
+        </div>
+  </div>
+  </div>
+    </div>    
+       
+  </div>
 </div>
-</body>]
-
 
 <!-- Modal Add Hotel -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

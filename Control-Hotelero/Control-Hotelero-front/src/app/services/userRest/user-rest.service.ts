@@ -48,14 +48,14 @@ export class UserRestService {
   //Cliente
 
   getUser(idCliente:string){
-    return this.http.get(environment.baseUrl + 'user/getUser/' + idCliente, {headers:this.httpOptions.set('Authorization', this.getToken())})
+    return this.http.get(environment.baseUrl + 'user/getUser/' + idCliente, {headers:this.httpOptions})
   }
   updateUser(idCliente:string, params:{}){
-    return this.http.put(environment.baseUrl + 'user/updateUser/' + idCliente, params, {headers:this.httpOptions.set('Authorization', this.getToken())})
+    return this.http.put(environment.baseUrl + 'user/updateUser/' + idCliente, params, {headers:this.httpOptions})
   };
 
   deleteUser(idCliente:string){
-    return this.http.delete(environment.baseUrl + 'user/deleteUser/' + idCliente, {headers:this.httpOptions.set('Authorization', this.getToken())})
+    return this.http.delete(environment.baseUrl + 'user/deleteUser/' + idCliente, {headers:this.httpOptions})
   };
 
 

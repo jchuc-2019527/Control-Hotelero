@@ -6,7 +6,7 @@
         </div>
         <div style="margin-left: -1%; margin-top: 12%; font-size: 1.90rem; font-family:Georgia, 'Times New Roman', Times, serif"  class="profile-name" >{{userUpdate.name}}</div>
         <hr>
-        <p style="font-size: 1.40rem; font-family:Georgia, 'Times New Roman', Times, serif" class="about">Nombre de Usuario: {{userUpdate.username}}</p>
+        <p style="font-size: 1.40rem; font-family:Georgia, 'Times New Roman', Times, serif" class="about">Username: {{userUpdate.username}}</p>
         <p style="font-size: 1.40rem; font-family:Georgia, 'Times New Roman', Times, serif" class="about">Rol: {{userUpdate.role}}</p>
         <button *ngIf="role =='CLIENT'" class="msg-btn" (click)="deleteUser()" (click)="logOut()" >Eliminar</button>
         <button *ngIf="role =='CLIENT'"  class="follow-btn" (click)="getUser()"  data-bs-toggle="modal" data-bs-target="#exampleModalCenterPerfilUpdate">Actualizar</button>
@@ -22,7 +22,7 @@
       <div class="modal-body py-0">
         <button  style="float:right" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <div class="d-flex main-content">
-          <div class="bg-image promo-img mr-3" style="background-image: url('../../../assets/img/perfil.png');">
+          <div class="bg-image promo-img mr-3" style="background-image: url('../../../assets/img/actualizarPerfil.jpg');">
           </div>
           <div class="content-text p-4">
             <h3>Actualizar Perfil</h3>

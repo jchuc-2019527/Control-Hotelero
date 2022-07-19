@@ -122,12 +122,12 @@ export class HotelesComponent implements OnInit {
     })
 
     swalWithBootstrapButtons.fire({
-      title: 'Esta seguro de eliminar este hotel?',
+      title: '¿Estás seguro de eliminar este hotel?',
       text: "¡No podrás revertir esto!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Si, eliminar!',
-      cancelButtonText: 'No, cancelar!',
+      confirmButtonText: '¡Si, eliminar!',
+      cancelButtonText: '¡No, cancelar!',
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {

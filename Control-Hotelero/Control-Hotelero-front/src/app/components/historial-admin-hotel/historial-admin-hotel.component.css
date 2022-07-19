@@ -7,9 +7,13 @@ body {
   text-rendering: optimizeLegibility;
   font-weight: initial;
   
-  height: 100vh;
+  height: 100%;
   background-image: url('../../../assets/img/fondoBlanco.png') ;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
+  background-color: white;
 }
 
 .light {

@@ -1,9 +1,9 @@
 <body>
     <app-nav-bar></app-nav-bar>
  <br>
-    <form action="https://duckduckgo.com/" role="search" class="search-form" style="float: left; margin-left: 2%;">
+    <form action="https://duckduckgo.com/" role="search" class="search-form" style="float: left; margin-left: 2%; height: 100%;">
         <input type="search" name="q"  [(ngModel)]="search" class="search-text" placeholder="Buscar por Hotel..." autocomplete="off">
-</form>
+    </form>
 <br>
 <div *ngFor="let invoice of arrayInvoce | searchF:search"  class="col-md-12">   
     <div style="margin-left: 30%;" class="row">

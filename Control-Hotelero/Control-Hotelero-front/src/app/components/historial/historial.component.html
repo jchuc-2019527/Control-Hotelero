@@ -1,12 +1,12 @@
 <body>
 	<app-nav-bar></app-nav-bar>
-<section>
+	<section>
 	<div class="container py-4">
 		<h1 class="h1 text-center" id="pageHeaderTitle">Mis Reservaciones</h1>
 
 		<form action="https://duckduckgo.com/" role="search" class="search-form" style="margin-left: 35%">
 			<input type="search" name="q"  [(ngModel)]="search" class="search-text" placeholder="Buscar por Hotel..." autocomplete="off">
-	</form>
+		</form>
 	<br>
 	<br>
 		<article class="postcard dark blue" *ngFor="let reservation of reservations | searchUh:search">
@@ -40,6 +40,6 @@
 		</article>
 		
 	</div>
-</section>
+	</section>
 </body>
 

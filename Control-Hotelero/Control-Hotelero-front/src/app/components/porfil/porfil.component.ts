@@ -13,6 +13,7 @@ import { AdminAppRestService } from 'src/app/services/adminAppRest/admin-app-res
 export class PorfilComponent implements OnInit {
   role: any
   idClient: any
+  id: any
   userUpdate:any
   user: userModel
 
@@ -31,6 +32,7 @@ export class PorfilComponent implements OnInit {
       this.idClient =idC.get('id');
 
       this.role = this.adminAppRest.getIdentity().role;
+      this.id = this.adminAppRest.getIdentity()._id;
     });
     this.getUser()
   };
@@ -81,7 +83,7 @@ export class PorfilComponent implements OnInit {
     })
   
     swalWithBootstrapButtons.fire({
-      title: 'Esta seguro de eliminar su cuenta?',
+      title: '¿Estás seguro de eliminar tu cuenta?',
       text: "¡No podrás revertir esto!",
       icon: 'warning',
       showCancelButton: true,
@@ -90,15 +92,14 @@ export class PorfilComponent implements OnInit {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        this.userRest.deleteUser(this.idClient).subscribe({
+        this.userRest.deleteUser(this.id).subscribe({
           next:(res:any)=>{
             this.router.navigateByUrl('/home')
-            //this.getUser()
           },
         })
         swalWithBootstrapButtons.fire(
-          'Cuenta eliminada!',
-          'Su cuenta ha sido eliminada.',
+          'Cuenta eliminada',
+          'Su cuenta ha sido eliminada',
           'success'
         )
       } else if (
@@ -107,7 +108,7 @@ export class PorfilComponent implements OnInit {
       ) {
         swalWithBootstrapButtons.fire(
           'Cancelado',
-          'No se elimino su cuenta:)',
+          'No se eliminó su cuenta',
           'error'
         )
       }
